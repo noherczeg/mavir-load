@@ -57,9 +57,9 @@
     net_plan_load: "Nettó terv rendszerterhelés",
     gross_plan:    "Bruttó terv rendszerterhelés",
   };
-  // Series drawn on load: actual real consumption + production. MAVIR has no
-  // actual-production series in this export, so production = planned generation.
-  const DEFAULT_ON = new Set(["net_actual", "net_plan_gen"]);
+  // Series drawn on load: gross actual load, gross day-ahead estimate, and
+  // net planned generation. Users can toggle the rest (persisted per browser).
+  const DEFAULT_ON = new Set(["gross_actual", "gross_est", "net_plan_gen"]);
   // Persist which series the user has toggled on/off (by stable key, not label).
   const STORE_KEY = "mavir.series.v1";
   function loadVisibility() {
