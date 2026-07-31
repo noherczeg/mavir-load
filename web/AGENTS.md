@@ -4,4 +4,4 @@ Static GitHub Pages chart. Fetches `../data/<date>.json`, renders with uPlot.
 
 | File | Purpose |
 |---|---|
-| `index.html` | Single-file app. `LABELS` = Hungarian display names per key; internal keys stay English. `DEFAULT_ON` = pessimistic defaults (`gross_actual`, `gross_est`, `net_plan_gen`); other series hidden but toggleable. Loads today ±1 day (window straddles midnight). `nowLinePlugin` draws the "Most" boundary at last non-null actual (`ACTUAL_KEYS`). uPlot rendered in Europe/Budapest via `tzDate`. See change: add-mavir-load-sync |
+| `index.html` | Single-file app. `LABELS` = exact official MAVIR legend names (from mavir.hu/web/mavir/rendszerterheles) per key; internal keys stay English. `DEFAULT_ON` = actual real consumption (`net_actual`) + production (`net_plan_gen`; MAVIR has no actual-production series, so planned generation stands in); other series hidden but toggleable. Loads today ±1 day (window straddles midnight). `nowLinePlugin` draws the "Most" boundary at last non-null actual (`ACTUAL_KEYS`). uPlot rendered in Europe/Budapest via `tzDate`. See change: add-mavir-load-sync |

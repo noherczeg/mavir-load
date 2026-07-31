@@ -27,19 +27,20 @@
   <script src="https://cdn.jsdelivr.net/npm/uplot@1.6.31/dist/uPlot.iife.min.js"></script>
   <script>
   // Hungarian display labels for each internal data key.
+  // Exact official MAVIR legend labels (from mavir.hu/web/mavir/rendszerterheles).
   const LABELS = {
     gross_actual:  "Bruttó tény rendszerterhelés",
-    gross_est:     "Bruttó becslés (dayahead)",
-    net_actual:    "Nettó tény rendszerterhelés",
-    net_est:       "Nettó becslés (dayahead)",
+    gross_est:     "Bruttó rendszerterhelés becslés (dayahead)",
+    net_actual:    "Nettó rendszerterhelés tény - üzemirányítási",
+    net_est:       "Nettó rendszerterhelés becslés (dayahead)",
     net_load:      "Nettó terhelés",
     net_plan_gen:  "Nettó terv rendszertermelés",
     net_plan_load: "Nettó terv rendszerterhelés",
     gross_plan:    "Bruttó terv rendszerterhelés",
   };
-  // Series drawn on load. Pessimistic-for-humans default:
-  //   consumption = gross (higher) actual + forecast; production = planned generation (lower margin).
-  const DEFAULT_ON = new Set(["gross_actual", "gross_est", "net_plan_gen"]);
+  // Series drawn on load: actual real consumption + production. MAVIR has no
+  // actual-production series in this export, so production = planned generation.
+  const DEFAULT_ON = new Set(["net_actual", "net_plan_gen"]);
   const COLORS = {
     gross_actual:  "#4dabf7", gross_est: "#74c0fc",
     net_actual:    "#ffa94d", net_est: "#ffc078",
