@@ -15,6 +15,8 @@ GitHub Pages: web/index.html + uPlot -> fetch data/<date>.json -> interactive ch
 
 | Path | What |
 |---|---|
+| `index.html` | Root redirect → `web/index.html` (so the Pages root opens the app) |
+| `.nojekyll` | Disables Jekyll so the README is not served as the site |
 | `sync/fetch.py` | Fetch (±12h window, 3 attempts), parse, upsert daily JSON |
 | `sync/test_sync.py` | Offline tests (parse + merge) using `sync/fixtures/export.xlsx` |
 | `sync/requirements.txt` | `openpyxl` |
