@@ -1,0 +1,95 @@
+{
+  "date": "2026-08-01",
+  "tz": "Europe/Budapest",
+  "points": [
+    {
+      "t": "2026-08-01T00:00:00+02:00",
+      "gross_est": 5343.89,
+      "net_plan_gen": 5798.667,
+      "net_plan_load": 5228.531,
+      "gross_actual": null,
+      "gross_plan": 5983.21,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4849.435
+    },
+    {
+      "t": "2026-08-01T00:15:00+02:00",
+      "gross_est": 5236.52,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4617.638
+    },
+    {
+      "t": "2026-08-01T00:30:00+02:00",
+      "gross_est": 5114.38,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4499.452
+    },
+    {
+      "t": "2026-08-01T00:45:00+02:00",
+      "gross_est": 4999.59,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4402.112
+    },
+    {
+      "t": "2026-08-01T01:00:00+02:00",
+      "gross_est": 4892.15,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4325.619
+    },
+    {
+      "t": "2026-08-01T01:15:00+02:00",
+      "gross_est": 4792.35,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4265.985
+    },
+    {
+      "t": "2026-08-01T01:30:00+02:00",
+      "gross_est": 4701.35,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4207.268
+    },
+    {
+      "t": "2026-08-01T01:45:00+02:00",
+      "gross_est": null,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": null
+    }
+  ],
+  "updated": "2026-07-31T13:34:02.943911+02:00"
+}

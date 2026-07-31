@@ -2,7 +2,11 @@
 
 ## Project Overview
 
-<!-- One-paragraph description of what this project is. -->
+Zero-cost stack that syncs the MAVIR Hungarian grid system-load xlsx export into
+versioned daily JSON (`data/`) via a GitHub Actions cron, and serves an
+interactive Hungarian chart (`web/`, uPlot) on GitHub Pages. Python sync job in
+`sync/`. No RDBMS — git is the storage. See `docs`/README and the `sync/` and
+`web/` `AGENTS.md` for detail.
 
 > Keep this root file lean. It loads into every agent turn — verbose doctrine
 > buries the rules the model must follow (signal dilution). Route per-file and
@@ -75,9 +79,10 @@ Documentation Update Protocol. The doc lookup does NOT replace grep; it goes fir
 <!-- Filled from the detected project stack; edit if your commands differ. -->
 
 ```bash
-pnpm install --frozen-lockfile    # install dependencies
-pnpm test       # run tests
-pnpm build       # build
+pip install -r sync/requirements.txt   # install sync deps (openpyxl)
+python sync/fetch.py                    # fetch + upsert data/*.json
+cd sync && python -m pytest test_sync.py -q   # run tests
+# view chart: python3 -m http.server 8000 -> /web/index.html
 ```
 
 ## OpenSpec

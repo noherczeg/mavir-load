@@ -1,0 +1,43 @@
+name: sync-mavir-load
+
+on:
+  schedule:
+    # every 30 minutes
+    - cron: "*/30 * * * *"
+  workflow_dispatch: {}
+
+# Prevent overlapping runs from racing on the same commit.
+concurrency:
+  group: sync-mavir-load
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r sync/requirements.txt
+
+      - name: Fetch + upsert
+        run: python sync/fetch.py
+
+      - name: Commit if data changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain data/)" ]]; then
+            git add data/
+            git commit -m "data: sync MAVIR load $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          else
+            echo "no data changes; nothing to commit"
+          fi

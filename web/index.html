@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MAVIR rendszerterhelés</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uplot@1.6.31/dist/uPlot.min.css" />
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      margin: 0; padding: 1rem; background: #0f1115; color: #e6e6e6;
+    }
+    h1 { font-size: 1.15rem; font-weight: 600; margin: 0 0 .25rem; }
+    .meta { font-size: .8rem; opacity: .7; margin-bottom: .75rem; }
+    #chart { max-width: 1100px; }
+    .err { color: #ff6b6b; }
+    .u-legend { font-size: .8rem; }
+  </style>
+</head>
+<body>
+  <h1>MAVIR rendszerterhelés (15 perces bontás)</h1>
+  <div class="meta" id="meta">Adatok betöltése…</div>
+  <div id="chart"></div>
+  <div class="err" id="err"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/uplot@1.6.31/dist/uPlot.iife.min.js"></script>
+  <script>
+  // Hungarian display labels for each internal data key.
+  const LABELS = {
+    gross_actual:  "Bruttó tény rendszerterhelés",
+    gross_est:     "Bruttó becslés (dayahead)",
+    net_actual:    "Nettó tény rendszerterhelés",
+    net_est:       "Nettó becslés (dayahead)",
+    net_load:      "Nettó terhelés",
+    net_plan_gen:  "Nettó terv rendszertermelés",
+    net_plan_load: "Nettó terv rendszerterhelés",
+    gross_plan:    "Bruttó terv rendszerterhelés",
+  };
+  // Series drawn on load. Pessimistic-for-humans default:
+  //   consumption = gross (higher) actual + forecast; production = planned generation (lower margin).
+  const DEFAULT_ON = new Set(["gross_actual", "gross_est", "net_plan_gen"]);
+  const COLORS = {
+    gross_actual:  "#4dabf7", gross_est: "#74c0fc",
+    net_actual:    "#ffa94d", net_est: "#ffc078",
+    net_load:      "#69db7c", net_plan_gen: "#e599f7",
+    net_plan_load: "#f783ac", gross_plan: "#ffd43b",
+  };
+  const KEYS = Object.keys(LABELS);
+
+  // Actual columns: where these go null marks the present moment ("Most").
+  const ACTUAL_KEYS = ["gross_actual", "net_actual", "net_load"];
+
+  function budapestToday() {
+    const p = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Europe/Budapest", year: "numeric", month: "2-digit", day: "2-digit",
+    }).formatToParts(new Date());
+    const g = (t) => p.find((x) => x.type === t).value;
+    return `${g("year")}-${g("month")}-${g("day")}`;
+  }
+  function shiftDate(iso, days) {
+    const d = new Date(iso + "T12:00:00Z");
+    d.setUTCDate(d.getUTCDate() + days);
+    return d.toISOString().slice(0, 10);
+  }
+
+  async function loadDay(date) {
+    try {
+      const r = await fetch(`../data/${date}.json`, { cache: "no-store" });
+      if (!r.ok) return [];
+      return (await r.json()).points || [];
+    } catch { return []; }
+  }
+
+  // Vertical "Most" (now) line at the present-moment boundary.
+  function nowLinePlugin(getBoundaryX) {
+    return { hooks: { draw: (u) => {
+      const x = getBoundaryX();
+      if (x == null) return;
+      const cx = Math.round(u.valToPos(x, "x", true));
+      const ctx = u.ctx;
+      ctx.save();
+      ctx.strokeStyle = "#ff6b6b"; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+      ctx.beginPath(); ctx.moveTo(cx, u.bbox.top); ctx.lineTo(cx, u.bbox.top + u.bbox.height); ctx.stroke();
+      ctx.setLineDash([]); ctx.fillStyle = "#ff6b6b"; ctx.font = "11px system-ui";
+      ctx.fillText("Most", cx + 4, u.bbox.top + 12);
+      ctx.restore();
+    }}};
+  }
+
+  (async function main() {
+    const today = budapestToday();
+    // ±12h window straddles day boundaries -> load today plus both neighbours.
+    const dates = [shiftDate(today, -1), today, shiftDate(today, 1)];
+    const dayArrays = await Promise.all(dates.map(loadDay));
+    const points = dayArrays.flat().sort((a, b) => a.t.localeCompare(b.t));
+
+    const errEl = document.getElementById("err");
+    const metaEl = document.getElementById("meta");
+    if (!points.length) {
+      metaEl.textContent = "";
+      errEl.textContent = "Nincs elérhető adat.";
+      return;
+    }
+
+    const xs = points.map((p) => Date.parse(p.t) / 1000);
+    const series = KEYS.map((k) => points.map((p) => (p[k] == null ? null : p[k])));
+
+    // present-moment boundary: last x where any actual column is non-null
+    let boundaryX = null;
+    for (let i = 0; i < points.length; i++) {
+      if (ACTUAL_KEYS.some((k) => points[i][k] != null)) boundaryX = xs[i];
+    }
+
+    const data = [xs, ...series];
+    const uSeries = [
+      { label: "Időpont" },
+      ...KEYS.map((k) => ({
+        label: LABELS[k],
+        stroke: COLORS[k],
+        width: DEFAULT_ON.has(k) ? 2 : 1,
+        show: DEFAULT_ON.has(k),
+        spanGaps: false,
+        value: (u, v) => (v == null ? "–" : v.toFixed(0) + " MW"),
+      })),
+    ];
+
+    const opts = {
+      width: Math.min(1100, document.body.clientWidth - 32),
+      height: 460,
+      series: uSeries,
+      scales: { x: { time: true } },
+      axes: [
+        { stroke: "#aaa", grid: { stroke: "#ffffff14" } },
+        { label: "Terhelés (MW)", stroke: "#aaa", grid: { stroke: "#ffffff14" } },
+      ],
+      plugins: [nowLinePlugin(() => boundaryX)],
+      tzDate: (ts) => uPlot.tzDate(new Date(ts * 1000), "Europe/Budapest"),
+    };
+
+    new uPlot(opts, data, document.getElementById("chart"));
+
+    metaEl.textContent =
+      `Időszak: ${dates.join(" – ")} · ${points.length} adatpont · ` +
+      `piros vonal = „Most” (tény adatok határa)`;
+    window.addEventListener("resize", () => location.reload());
+  })();
+  </script>
+</body>
+</html>
