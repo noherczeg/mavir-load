@@ -170,13 +170,14 @@
       ],
       plugins: [nowLinePlugin(() => boundaryX)],
       tzDate: (ts) => uPlot.tzDate(new Date(ts * 1000), "Europe/Budapest"),
-      hooks: {
-        // Persist visibility whenever a legend entry is toggled.
-        setSeries: (u, idx, opts) => { if (opts && "show" in opts) saveVisibility(u); },
-      },
     };
 
     const u = new uPlot(opts, data, document.getElementById("chart"));
+
+    // uPlot's legend toggle does NOT fire the setSeries hook in this build, so
+    // persist by listening on the legend directly and reading state next tick.
+    u.root.querySelector(".u-legend")
+      ?.addEventListener("click", () => setTimeout(() => saveVisibility(u), 0));
 
     // Fill the whole viewport: width = client width, height = whatever is left
     // below the header once the (wrap-dependent) legend height is known.
