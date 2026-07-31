@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MAVIR rendszerterhelés</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uplot@1.6.31/dist/uPlot.min.css" />
   <style>
     :root { color-scheme: light dark; }
     html, body { height: 100%; }
@@ -12,40 +11,26 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       margin: 0; padding: 1rem; box-sizing: border-box;
       background: #0f1115; color: #e6e6e6;
-      overflow: hidden;
+      display: flex; flex-direction: column; overflow: hidden;
     }
     h1 { font-size: 1.15rem; font-weight: 600; margin: 0 0 .25rem; }
     .meta { font-size: .8rem; opacity: .7; margin-bottom: .75rem; }
-    #chart { width: 100%; }
+    #wrap { position: relative; flex: 1; min-height: 0; }
     .err { color: #ff6b6b; }
-    .u-legend { font-size: .8rem; text-align: left; }
-    /* Timestamp (x-series) gets its own dedicated row above the series legend. */
-    .u-legend .u-series:first-child {
-      display: block;
-      margin-bottom: .35rem;
-      padding-bottom: .35rem;
-      border-bottom: 1px solid #ffffff1a;
-      font-variant-numeric: tabular-nums;
-    }
-    /* Reserve a stable width for value cells so numbers don't reflow on hover. */
-    .u-legend .u-value {
-      display: inline-block;
-      min-width: 5.5em;
-      text-align: right;
-      font-variant-numeric: tabular-nums;
-    }
-    .u-legend .u-series:first-child .u-value { min-width: 12em; }
   </style>
 </head>
 <body>
   <h1>MAVIR rendszerterhelés (15 perces bontás)</h1>
   <div class="meta" id="meta">Adatok betöltése…</div>
-  <div id="chart"></div>
+  <div id="wrap"><canvas id="chart"></canvas></div>
   <div class="err" id="err"></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/uplot@1.6.31/dist/uPlot.iife.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.3.1/dist/chartjs-adapter-luxon.umd.min.js"></script>
   <script>
-  // Hungarian display labels for each internal data key.
+  const TZ = "Europe/Budapest";
+
   // Exact official MAVIR legend labels (from mavir.hu/web/mavir/rendszerterheles).
   const LABELS = {
     gross_actual:  "Bruttó tény rendszerterhelés",
@@ -57,22 +42,6 @@
     net_plan_load: "Nettó terv rendszerterhelés",
     gross_plan:    "Bruttó terv rendszerterhelés",
   };
-  // Series drawn on load: gross actual load, gross day-ahead estimate, and
-  // net planned generation. Users can toggle the rest (persisted per browser).
-  const DEFAULT_ON = new Set(["gross_actual", "gross_est", "net_plan_gen"]);
-  // Persist which series the user has toggled on/off (by stable key, not label).
-  const STORE_KEY = "mavir.series.v1";
-  function loadVisibility() {
-    try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch { return {}; }
-  }
-  function isOn(stored, k) {
-    return k in stored ? !!stored[k] : DEFAULT_ON.has(k);
-  }
-  function saveVisibility(u) {
-    const state = {};
-    KEYS.forEach((k, i) => { state[k] = !!u.series[i + 1].show; });
-    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch {}
-  }
   const COLORS = {
     gross_actual:  "#5b8ff9", gross_est: "#36d1dc",
     net_actual:    "#ff9f40", net_est: "#e6d13a",
@@ -80,13 +49,28 @@
     net_plan_load: "#b57bff", gross_plan: "#c98a5e",
   };
   const KEYS = Object.keys(LABELS);
-
+  // Series drawn on load; users can toggle the rest (persisted per browser).
+  const DEFAULT_ON = new Set(["gross_actual", "gross_est", "net_plan_gen"]);
   // Actual columns: where these go null marks the present moment ("Most").
   const ACTUAL_KEYS = ["gross_actual", "net_actual", "net_load"];
 
+  // Persist which series are visible (by stable key, not label/index).
+  const STORE_KEY = "mavir.series.v1";
+  function loadVisibility() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch { return {}; }
+  }
+  function isOn(stored, k) {
+    return k in stored ? !!stored[k] : DEFAULT_ON.has(k);
+  }
+  function saveVisibility(chart) {
+    const state = {};
+    KEYS.forEach((k, i) => { state[k] = chart.isDatasetVisible(i); });
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch {}
+  }
+
   function budapestToday() {
     const p = new Intl.DateTimeFormat("en-CA", {
-      timeZone: "Europe/Budapest", year: "numeric", month: "2-digit", day: "2-digit",
+      timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit",
     }).formatToParts(new Date());
     const g = (t) => p.find((x) => x.type === t).value;
     return `${g("year")}-${g("month")}-${g("day")}`;
@@ -96,7 +80,6 @@
     d.setUTCDate(d.getUTCDate() + days);
     return d.toISOString().slice(0, 10);
   }
-
   async function loadDay(date) {
     try {
       const r = await fetch(`../data/${date}.json`, { cache: "no-store" });
@@ -105,20 +88,24 @@
     } catch { return []; }
   }
 
-  // Vertical "Most" (now) line at the present-moment boundary.
+  // Vertical "Most" line at the present-moment boundary (a Chart.js plugin).
   function nowLinePlugin(getBoundaryX) {
-    return { hooks: { draw: (u) => {
-      const x = getBoundaryX();
-      if (x == null) return;
-      const cx = Math.round(u.valToPos(x, "x", true));
-      const ctx = u.ctx;
-      ctx.save();
-      ctx.strokeStyle = "#ff6b6b"; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
-      ctx.beginPath(); ctx.moveTo(cx, u.bbox.top); ctx.lineTo(cx, u.bbox.top + u.bbox.height); ctx.stroke();
-      ctx.setLineDash([]); ctx.fillStyle = "#ff6b6b"; ctx.font = "11px system-ui";
-      ctx.fillText("Most", cx + 4, u.bbox.top + 12);
-      ctx.restore();
-    }}};
+    return {
+      id: "nowLine",
+      afterDatasetsDraw(chart) {
+        const x = getBoundaryX();
+        if (x == null) return;
+        const px = chart.scales.x.getPixelForValue(x);
+        const { ctx, chartArea } = chart;
+        if (px < chartArea.left || px > chartArea.right) return;
+        ctx.save();
+        ctx.strokeStyle = "#ff6b6b"; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+        ctx.beginPath(); ctx.moveTo(px, chartArea.top); ctx.lineTo(px, chartArea.bottom); ctx.stroke();
+        ctx.setLineDash([]); ctx.fillStyle = "#ff6b6b"; ctx.font = "11px system-ui";
+        ctx.fillText("Most", px + 4, chartArea.top + 12);
+        ctx.restore();
+      },
+    };
   }
 
   (async function main() {
@@ -136,62 +123,77 @@
       return;
     }
 
-    const xs = points.map((p) => Date.parse(p.t) / 1000);
-    const series = KEYS.map((k) => points.map((p) => (p[k] == null ? null : p[k])));
-
     // present-moment boundary: last x where any actual column is non-null
     let boundaryX = null;
-    for (let i = 0; i < points.length; i++) {
-      if (ACTUAL_KEYS.some((k) => points[i][k] != null)) boundaryX = xs[i];
+    for (const p of points) {
+      if (ACTUAL_KEYS.some((k) => p[k] != null)) boundaryX = Date.parse(p.t);
     }
 
-    const data = [xs, ...series];
     const stored = loadVisibility();
-    const uSeries = [
-      { label: "Időpont" },
-      ...KEYS.map((k) => ({
-        label: LABELS[k],
-        stroke: COLORS[k],
-        width: DEFAULT_ON.has(k) ? 2 : 1,
-        show: isOn(stored, k),
-        spanGaps: false,
-        value: (u, v) => (v == null ? "–" : v.toFixed(0) + " MW"),
-      })),
-    ];
+    const datasets = KEYS.map((k) => ({
+      label: LABELS[k],
+      data: points.map((p) => ({ x: Date.parse(p.t), y: p[k] })),
+      borderColor: COLORS[k],
+      backgroundColor: COLORS[k],
+      borderWidth: DEFAULT_ON.has(k) ? 2 : 1.5,
+      pointRadius: 0,
+      pointHoverRadius: 4,
+      spanGaps: false,
+      tension: 0.15,
+      hidden: !isOn(stored, k),
+    }));
 
-    const opts = {
-      width: document.documentElement.clientWidth - 32,
-      height: 460,
-      series: uSeries,
-      scales: { x: { time: true } },
-      axes: [
-        { stroke: "#aaa", grid: { stroke: "#ffffff14" } },
-        { label: "Terhelés (MW)", stroke: "#aaa", grid: { stroke: "#ffffff14" } },
-      ],
+    Chart.defaults.color = "#c7ccd4";
+    Chart.defaults.font.family = "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif";
+
+    new Chart(document.getElementById("chart"), {
+      type: "line",
+      data: { datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: false,
+        normalized: true,
+        interaction: { mode: "index", intersect: false },
+        scales: {
+          x: {
+            type: "time",
+            adapters: { date: { zone: TZ } },
+            time: { unit: "hour", displayFormats: { hour: "HH:mm" }, tooltipFormat: "yyyy.MM.dd HH:mm" },
+            ticks: { color: "#9aa0aa", maxRotation: 0, autoSkip: true, autoSkipPadding: 24 },
+            grid: { color: "#ffffff12" },
+          },
+          y: {
+            title: { display: true, text: "Terhelés (MW)", color: "#9aa0aa" },
+            ticks: { color: "#9aa0aa" },
+            grid: { color: "#ffffff12" },
+          },
+        },
+        plugins: {
+          legend: {
+            position: "bottom",
+            labels: { color: "#e6e6e6", boxWidth: 14, boxHeight: 3, usePointStyle: false },
+            onClick: (e, item, legend) => {
+              const ci = legend.chart;
+              ci.setDatasetVisibility(item.datasetIndex, !ci.isDatasetVisible(item.datasetIndex));
+              ci.update();
+              saveVisibility(ci);
+            },
+          },
+          tooltip: {
+            mode: "index",
+            intersect: false,
+            position: "nearest",
+            itemSort: (a, b) => b.parsed.y - a.parsed.y,
+            filter: (item) => item.parsed.y != null,
+            callbacks: {
+              label: (item) => `${item.dataset.label}: ${Math.round(item.parsed.y)} MW`,
+            },
+          },
+        },
+      },
       plugins: [nowLinePlugin(() => boundaryX)],
-      tzDate: (ts) => uPlot.tzDate(new Date(ts * 1000), "Europe/Budapest"),
-    };
-
-    const u = new uPlot(opts, data, document.getElementById("chart"));
-
-    // uPlot's legend toggle does NOT fire the setSeries hook in this build, so
-    // persist by listening on the legend directly and reading state next tick.
-    u.root.querySelector(".u-legend")
-      ?.addEventListener("click", () => setTimeout(() => saveVisibility(u), 0));
-
-    // Fill the whole viewport: width = client width, height = whatever is left
-    // below the header once the (wrap-dependent) legend height is known.
-    function fitChart() {
-      const width = document.documentElement.clientWidth - 32;
-      u.setSize({ width, height: u.height });               // set width first so legend wraps
-      const legendH = u.root.querySelector(".u-legend")?.getBoundingClientRect().height || 0;
-      const top = u.root.getBoundingClientRect().top;        // header/meta space above chart
-      const height = Math.max(220, window.innerHeight - top - legendH - 16);
-      u.setSize({ width, height });
-    }
-    requestAnimationFrame(fitChart);
-    let rz;
-    window.addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(fitChart, 120); });
+    });
 
     metaEl.textContent =
       `Időszak: ${dates.join(" – ")} · ${points.length} adatpont · ` +
