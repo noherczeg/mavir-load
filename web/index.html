@@ -15,7 +15,23 @@
     .meta { font-size: .8rem; opacity: .7; margin-bottom: .75rem; }
     #chart { max-width: 1100px; }
     .err { color: #ff6b6b; }
-    .u-legend { font-size: .8rem; }
+    .u-legend { font-size: .8rem; text-align: left; }
+    /* Timestamp (x-series) gets its own dedicated row above the series legend. */
+    .u-legend .u-series:first-child {
+      display: block;
+      margin-bottom: .35rem;
+      padding-bottom: .35rem;
+      border-bottom: 1px solid #ffffff1a;
+      font-variant-numeric: tabular-nums;
+    }
+    /* Reserve a stable width for value cells so numbers don't reflow on hover. */
+    .u-legend .u-value {
+      display: inline-block;
+      min-width: 5.5em;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .u-legend .u-series:first-child .u-value { min-width: 12em; }
   </style>
 </head>
 <body>
