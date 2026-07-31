@@ -41,6 +41,19 @@
   // Series drawn on load: actual real consumption + production. MAVIR has no
   // actual-production series in this export, so production = planned generation.
   const DEFAULT_ON = new Set(["net_actual", "net_plan_gen"]);
+  // Persist which series the user has toggled on/off (by stable key, not label).
+  const STORE_KEY = "mavir.series.v1";
+  function loadVisibility() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch { return {}; }
+  }
+  function isOn(stored, k) {
+    return k in stored ? !!stored[k] : DEFAULT_ON.has(k);
+  }
+  function saveVisibility(u) {
+    const state = {};
+    KEYS.forEach((k, i) => { state[k] = !!u.series[i + 1].show; });
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch {}
+  }
   const COLORS = {
     gross_actual:  "#4dabf7", gross_est: "#74c0fc",
     net_actual:    "#ffa94d", net_est: "#ffc078",
@@ -114,13 +127,14 @@
     }
 
     const data = [xs, ...series];
+    const stored = loadVisibility();
     const uSeries = [
       { label: "Időpont" },
       ...KEYS.map((k) => ({
         label: LABELS[k],
         stroke: COLORS[k],
         width: DEFAULT_ON.has(k) ? 2 : 1,
-        show: DEFAULT_ON.has(k),
+        show: isOn(stored, k),
         spanGaps: false,
         value: (u, v) => (v == null ? "–" : v.toFixed(0) + " MW"),
       })),
@@ -137,6 +151,10 @@
       ],
       plugins: [nowLinePlugin(() => boundaryX)],
       tzDate: (ts) => uPlot.tzDate(new Date(ts * 1000), "Europe/Budapest"),
+      hooks: {
+        // Persist visibility whenever a legend entry is toggled.
+        setSeries: (u, idx, opts) => { if (opts && "show" in opts) saveVisibility(u); },
+      },
     };
 
     new uPlot(opts, data, document.getElementById("chart"));
