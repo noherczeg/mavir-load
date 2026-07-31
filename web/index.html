@@ -7,13 +7,16 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uplot@1.6.31/dist/uPlot.min.css" />
   <style>
     :root { color-scheme: light dark; }
+    html, body { height: 100%; }
     body {
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      margin: 0; padding: 1rem; background: #0f1115; color: #e6e6e6;
+      margin: 0; padding: 1rem; box-sizing: border-box;
+      background: #0f1115; color: #e6e6e6;
+      overflow: hidden;
     }
     h1 { font-size: 1.15rem; font-weight: 600; margin: 0 0 .25rem; }
     .meta { font-size: .8rem; opacity: .7; margin-bottom: .75rem; }
-    #chart { max-width: 1100px; }
+    #chart { width: 100%; }
     .err { color: #ff6b6b; }
     .u-legend { font-size: .8rem; text-align: left; }
     /* Timestamp (x-series) gets its own dedicated row above the series legend. */
@@ -157,7 +160,7 @@
     ];
 
     const opts = {
-      width: Math.min(1100, document.body.clientWidth - 32),
+      width: document.documentElement.clientWidth - 32,
       height: 460,
       series: uSeries,
       scales: { x: { time: true } },
@@ -173,12 +176,25 @@
       },
     };
 
-    new uPlot(opts, data, document.getElementById("chart"));
+    const u = new uPlot(opts, data, document.getElementById("chart"));
+
+    // Fill the whole viewport: width = client width, height = whatever is left
+    // below the header once the (wrap-dependent) legend height is known.
+    function fitChart() {
+      const width = document.documentElement.clientWidth - 32;
+      u.setSize({ width, height: u.height });               // set width first so legend wraps
+      const legendH = u.root.querySelector(".u-legend")?.getBoundingClientRect().height || 0;
+      const top = u.root.getBoundingClientRect().top;        // header/meta space above chart
+      const height = Math.max(220, window.innerHeight - top - legendH - 16);
+      u.setSize({ width, height });
+    }
+    requestAnimationFrame(fitChart);
+    let rz;
+    window.addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(fitChart, 120); });
 
     metaEl.textContent =
       `Időszak: ${dates.join(" – ")} · ${points.length} adatpont · ` +
       `piros vonal = „Most” (tény adatok határa)`;
-    window.addEventListener("resize", () => location.reload());
   })();
   </script>
 </body>
