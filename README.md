@@ -18,20 +18,24 @@ GitHub Pages: web/index.html + uPlot -> fetch data/<date>.json -> interactive ch
 | `index.html` | Root redirect → `web/index.html` (so the Pages root opens the app) |
 | `.nojekyll` | Disables Jekyll so the README is not served as the site |
 | `sync/fetch.py` | Fetch (±12h window, 3 attempts), parse, upsert daily JSON |
-| `sync/test_sync.py` | Offline tests (parse + merge) using `sync/fixtures/export.xlsx` |
+| `sync/test_sync.py` | Offline tests (parse + merge) using `sync/fixtures/export.xlsx` + `export_4401.xlsx` |
 | `sync/requirements.txt` | `openpyxl` |
-| `data/<YYYY-MM-DD>.json` | Generated, versioned load data (Europe/Budapest days) |
+| `data/<YYYY-MM-DD>.json` | Generated, versioned load + production data (Europe/Budapest days) |
 | `web/index.html` | Static uPlot chart, Hungarian labels |
 | `.github/workflows/sync.yml` | Cron `*/30` + manual dispatch |
 
 ## Data model
 
-`data/<date>.json` holds points keyed by ISO-8601 timestamp. Value keys
-(English internally, Hungarian in the UI): `gross_actual`, `gross_est`,
-`net_actual`, `net_est`, `net_load`, `net_plan_gen`, `net_plan_load`,
-`gross_plan`. Missing values are explicit `null`. Certified columns (multi-day
-lag) are skipped in v1. Upsert prefers newer non-null values and never
-overwrites a value with null.
+`data/<date>.json` holds points keyed by ISO-8601 timestamp, merged from two
+MAVIR charts by shared timestamp. Load keys (chart 7678): `gross_actual`,
+`gross_est`, `net_actual`, `net_est`, `net_load`, `net_plan_gen`,
+`net_plan_load`, `gross_plan`. Production keys (chart 4401): `prod_gross_plan`,
+`prod_gross_actual`, `prod_net_plan`, `prod_net_actual`. Keys are English
+internally, Hungarian in the UI. Missing values are explicit `null`. The two
+charts are fetched independently — one failing never blocks the other. Certified
+load columns and the lagged `prod_net_actual` are outside the ±12h window in
+v1. Upsert prefers newer non-null values and never overwrites a value with
+null.
 
 The **present-moment boundary** ("Most") is data-driven: the last timestamp
 where any actual column is non-null.

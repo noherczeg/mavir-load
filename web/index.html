@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MAVIR rendszerterhelés</title>
+  <title>MAVIR rendszerterhelés és termelés</title>
   <style>
     :root { color-scheme: light dark; }
     html, body { height: 100%; }
@@ -25,7 +25,7 @@
 </head>
 <body>
   <header>
-    <h1>MAVIR rendszerterhelés (15 perces bontás)</h1>
+    <h1>MAVIR rendszerterhelés és termelés (15 perces bontás)</h1>
     <a class="github-link" href="https://github.com/noherczeg/mavir-load" aria-label="GitHub tároló">
       <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 4.8c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
     </a>
@@ -50,18 +50,29 @@
     net_plan_gen:  "Nettó terv rendszertermelés",
     net_plan_load: "Nettó terv rendszerterhelés",
     gross_plan:    "Bruttó terv rendszerterhelés",
+    // Production (chart 4401) — exact MAVIR column names.
+    prod_gross_plan:   "Bruttó terv erőművi termelés",
+    prod_gross_actual: "Bruttó tény erőművi termelés",
+    prod_net_plan:     "Nettó terv erőművi termelés",
+    prod_net_actual:   "Nettó hazai termelés tény",
   };
   const COLORS = {
     gross_actual:  "#5b8ff9", gross_est: "#36d1dc",
     net_actual:    "#ff9f40", net_est: "#e6d13a",
     net_load:      "#4bd865", net_plan_gen: "#ff7fbf",
     net_plan_load: "#b57bff", gross_plan: "#c98a5e",
+    prod_gross_actual: "#f2545b", prod_gross_plan: "#f6a821",
+    prod_net_plan:     "#8fd14f", prod_net_actual: "#26c6da",
   };
   const KEYS = Object.keys(LABELS);
   // Series drawn on load; users can toggle the rest (persisted per browser).
-  const DEFAULT_ON = new Set(["gross_actual", "gross_est", "net_plan_gen"]);
+  // Pessimistic default: max load (gross_actual→gross_est) + generation
+  // (prod_gross_actual past → prod_gross_plan future).
+  const DEFAULT_ON = new Set([
+    "gross_actual", "gross_est", "prod_gross_actual", "prod_gross_plan",
+  ]);
   // Actual columns: where these go null marks the present moment ("Most").
-  const ACTUAL_KEYS = ["gross_actual", "net_actual", "net_load"];
+  const ACTUAL_KEYS = ["gross_actual", "net_actual", "net_load", "prod_gross_actual"];
 
   // Persist which series are visible (by stable key, not label/index).
   const STORE_KEY = "mavir.series.v1";
@@ -181,7 +192,7 @@
             grid: { color: "#ffffff12" },
           },
           y: {
-            title: { display: true, text: "Terhelés (MW)", color: "#9aa0aa" },
+            title: { display: true, text: "Terhelés / termelés (MW)", color: "#9aa0aa" },
             ticks: { color: "#9aa0aa" },
             grid: { color: "#ffffff12" },
           },

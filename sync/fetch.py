@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Fetch the MAVIR grid-load xlsx export and upsert it into versioned daily JSON.
+"""Fetch the MAVIR grid xlsx exports and upsert them into versioned daily JSON.
 
 Runs from GitHub Actions every 30 minutes. Pulls the previous 12h + next 12h
-window (Europe/Budapest), retries on failure, parses the xlsx, normalizes rows,
-and merges them into data/<YYYY-MM-DD>.json preferring newer non-null values.
+window (Europe/Budapest) for both charts (7678 load, 4401 production) — each
+fetched independently so one failing does not block the other — parses each,
+normalizes rows, and merges them by shared timestamp into
+data/<YYYY-MM-DD>.json preferring newer non-null values.
 
 Stdlib only for I/O; openpyxl for xlsx parsing.
 """
@@ -23,8 +25,7 @@ from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 
 TZ = ZoneInfo("Europe/Budapest")
-CHART_ID = 7678
-BASE_URL = f"https://rtdwweb.mavir.hu/rtdwweb/webuser/chart/{CHART_ID}/export"
+BASE_URL = "https://rtdwweb.mavir.hu/rtdwweb/webuser/chart/{chart_id}/export"
 WINDOW = timedelta(hours=12)
 MAX_ATTEMPTS = 3  # 1 initial + 2 retries
 RETRY_BACKOFF_S = 5
@@ -34,7 +35,7 @@ DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 
 # xlsx column letter -> normalized key. B (gross_certified) and H (net_certified)
 # are intentionally skipped in v1 (published with multi-day lag, outside window).
-COLUMN_MAP = {
+LOAD_COLUMN_MAP = {
     "A": "t",
     "C": "gross_est",
     "D": "net_plan_gen",
@@ -45,7 +46,24 @@ COLUMN_MAP = {
     "J": "net_actual",
     "K": "net_est",
 }
-VALUE_KEYS = [v for k, v in COLUMN_MAP.items() if k != "A"]
+
+# Production (generation) export chart 4401. E (prod_net_actual) publishes with a
+# lag and is null inside the ±12h window; mapped null-safely, not relied upon.
+PROD_COLUMN_MAP = {
+    "A": "t",
+    "B": "prod_gross_plan",
+    "C": "prod_gross_actual",
+    "D": "prod_net_plan",
+    "E": "prod_net_actual",
+}
+
+# Two independent charts merged into the same daily file by shared `t`.
+CHARTS = ((7678, LOAD_COLUMN_MAP), (4401, PROD_COLUMN_MAP))
+
+# Union of every value key across charts (for schema reference).
+VALUE_KEYS = [
+    v for cm in (LOAD_COLUMN_MAP, PROD_COLUMN_MAP) for k, v in cm.items() if k != "A"
+]
 
 
 def log(msg: str) -> None:
@@ -66,9 +84,10 @@ def window_ms(now: datetime | None = None) -> tuple[int, int]:
     return from_ms, to_ms
 
 
-def build_url(from_ms: int, to_ms: int) -> str:
+def build_url(chart_id: int, from_ms: int, to_ms: int) -> str:
+    base = BASE_URL.format(chart_id=chart_id)
     return (
-        f"{BASE_URL}?exportType=xlsx&fromTime={from_ms}&toTime={to_ms}"
+        f"{base}?exportType=xlsx&fromTime={from_ms}&toTime={to_ms}"
         f"&periodType=min&period=15"
     )
 
@@ -102,8 +121,8 @@ def _norm_ts(raw: str) -> str:
     return dt.isoformat()
 
 
-def parse(xlsx_bytes: bytes) -> list[dict]:
-    """Parse the export into a list of normalized points (ISO ts + value keys)."""
+def parse(xlsx_bytes: bytes, colmap: dict = LOAD_COLUMN_MAP) -> list[dict]:
+    """Parse an export into normalized points (ISO ts + `colmap`'s value keys)."""
     wb = load_workbook(io.BytesIO(xlsx_bytes), read_only=True, data_only=True)
     ws = wb.active
     points: list[dict] = []
@@ -115,7 +134,7 @@ def parse(xlsx_bytes: bytes) -> list[dict]:
         if raw_t in (None, ""):
             continue
         point: dict = {"t": _norm_ts(str(raw_t))}
-        for col, key in COLUMN_MAP.items():
+        for col, key in colmap.items():
             if key == "t":
                 continue
             v = cell_by_col.get(col)
@@ -130,12 +149,12 @@ def _local_date(iso_ts: str) -> str:
 
 
 def _merge_point(existing: dict, fresh: dict) -> bool:
-    """Fill null fields in `existing` from `fresh`. Never overwrite non-null with
-    null. Returns True if anything changed."""
+    """Fill fields in `existing` from `fresh`'s non-null values. Never overwrite a
+    non-null with null. Key-set agnostic (handles load and prod_* alike).
+    Returns True if anything changed."""
     changed = False
-    for key in VALUE_KEYS:
-        new_val = fresh.get(key)
-        if new_val is None:
+    for key, new_val in fresh.items():
+        if key == "t" or new_val is None:
             continue
         # Fill nulls and pick up genuinely changed values; never null-out.
         if existing.get(key) != new_val:
@@ -184,16 +203,24 @@ def upsert(points: list[dict]) -> list[Path]:
 
 def main() -> int:
     from_ms, to_ms = window_ms()
-    url = build_url(from_ms, to_ms)
     log(f"window {from_ms}..{to_ms}")
-    try:
-        body = fetch(url)
-        points = parse(body)
-    except Exception as exc:  # noqa: BLE001 - top-level run guard
-        log(f"RUN FAILED: {exc}")
+    all_points: list[dict] = []
+    ok_charts = 0
+    for chart_id, colmap in CHARTS:
+        url = build_url(chart_id, from_ms, to_ms)
+        try:
+            body = fetch(url)
+            points = parse(body, colmap)
+        except Exception as exc:  # noqa: BLE001 - per-chart isolation
+            log(f"chart {chart_id} FAILED: {exc}")
+            continue
+        log(f"chart {chart_id}: parsed {len(points)} points")
+        all_points.extend(points)
+        ok_charts += 1
+    if ok_charts == 0:
+        log("RUN FAILED: all charts failed")
         return 1
-    log(f"parsed {len(points)} points")
-    changed = upsert(points)
+    changed = upsert(all_points)
     if changed:
         log(f"changed {len(changed)} file(s): {', '.join(p.name for p in changed)}")
     else:
