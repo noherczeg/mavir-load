@@ -167,6 +167,17 @@
       if (ACTUAL_KEYS.some((k) => p[k] != null)) boundaryX = Date.parse(p.t);
     }
 
+    // Baseline the y-axis at 0 unless some value actually dips below it (then
+    // auto-scale so negatives stay visible).
+    let dataMin = Infinity;
+    for (const p of points) {
+      for (const k of KEYS) {
+        const v = p[k];
+        if (v != null && v < dataMin) dataMin = v;
+      }
+    }
+    const yMin = dataMin >= 0 ? 0 : undefined;
+
     const stored = loadVisibility();
     const datasets = KEYS.map((k) => {
       const s = STYLE[k];
@@ -207,6 +218,7 @@
             grid: { color: "#ffffff12" },
           },
           y: {
+            min: yMin,
             title: { display: true, text: "Terhelés / termelés (MW)", color: "#9aa0aa" },
             ticks: { color: "#9aa0aa" },
             grid: { color: "#ffffff12" },
