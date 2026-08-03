@@ -49,10 +49,35 @@
     prod_gross_actual: "Bruttó tény erőművi termelés",
   };
   const COLORS = {
-    gross_actual:  "#5b8ff9", gross_plan: "#c98a5e",
-    prod_gross_plan: "#f6a821", prod_gross_actual: "#f2545b",
+    gross_actual:  "#4f9dff",  // load actual   — blue
+    gross_plan:    "#b57bff",  // load plan     — violet
+    prod_gross_actual: "#34d399",  // prod actual — green
+    prod_gross_plan:   "#f6a821",  // prod plan   — amber
+  };
+  // Line-style + fill variety: solid for actuals, dashed for plans; the two
+  // production series get a faint area fill so they read as a distinct group.
+  const STYLE = {
+    gross_actual:      { dash: [],    fill: false },
+    gross_plan:        { dash: [7, 5], fill: false },
+    prod_gross_actual: { dash: [],    fill: true },
+    prod_gross_plan:   { dash: [7, 5], fill: true },
   };
   const KEYS = Object.keys(LABELS);
+
+  // Faint vertical gradient (line color fading to transparent) for filled areas.
+  function fadeFill(hex) {
+    const n = parseInt(hex.slice(1), 16);
+    const r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+    return (ctx) => {
+      const area = ctx.chart.chartArea;
+      if (!area) return "transparent";
+      const grad = ctx.chart.ctx.createLinearGradient(0, area.top, 0, area.bottom);
+      grad.addColorStop(0, `rgba(${r},${g},${b},0.22)`);
+      grad.addColorStop(0.6, `rgba(${r},${g},${b},0.05)`);
+      grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
+      return grad;
+    };
+  }
   // All curated series are drawn on load; still individually toggleable.
   const DEFAULT_ON = new Set(KEYS);
   // Actual columns: where these go null marks the present moment ("Most").
@@ -143,18 +168,23 @@
     }
 
     const stored = loadVisibility();
-    const datasets = KEYS.map((k) => ({
-      label: LABELS[k],
-      data: points.map((p) => ({ x: Date.parse(p.t), y: p[k] })),
-      borderColor: COLORS[k],
-      backgroundColor: COLORS[k],
-      borderWidth: DEFAULT_ON.has(k) ? 2 : 1.5,
-      pointRadius: 0,
-      pointHoverRadius: 4,
-      spanGaps: false,
-      tension: 0.15,
-      hidden: !isOn(stored, k),
-    }));
+    const datasets = KEYS.map((k) => {
+      const s = STYLE[k];
+      return {
+        label: LABELS[k],
+        data: points.map((p) => ({ x: Date.parse(p.t), y: p[k] })),
+        borderColor: COLORS[k],
+        backgroundColor: s.fill ? fadeFill(COLORS[k]) : COLORS[k],
+        borderDash: s.dash,
+        borderWidth: 2,
+        fill: s.fill ? "origin" : false,
+        pointRadius: 0,
+        pointHoverRadius: 4,
+        spanGaps: false,
+        tension: 0.15,
+        hidden: !isOn(stored, k),
+      };
+    });
 
     Chart.defaults.color = "#c7ccd4";
     Chart.defaults.font.family = "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif";
