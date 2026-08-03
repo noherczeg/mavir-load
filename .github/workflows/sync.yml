@@ -34,10 +34,20 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if [[ -n "$(git status --porcelain data/)" ]]; then
-            git add data/
-            git commit -m "data: sync MAVIR load $(date -u +%Y-%m-%dT%H:%MZ)"
-            git push
-          else
+          if [[ -z "$(git status --porcelain data/)" ]]; then
             echo "no data changes; nothing to commit"
+            exit 0
           fi
+          git add data/
+          git commit -m "data: sync MAVIR load $(date -u +%Y-%m-%dT%H:%MZ)"
+          # Rebase onto any commit that landed since checkout (manual pushes,
+          # an overlapping run) and retry — the push itself can still race.
+          for attempt in 1 2 3 4 5; do
+            if git push; then
+              exit 0
+            fi
+            echo "push rejected (attempt $attempt); rebasing onto origin/master"
+            git pull --rebase --autostash origin master || exit 1
+          done
+          echo "push failed after 5 attempts"
+          exit 1
