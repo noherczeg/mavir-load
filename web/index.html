@@ -43,39 +43,26 @@
   // Exact official MAVIR legend labels (from mavir.hu/web/mavir/rendszerterheles).
   const LABELS = {
     gross_actual:  "Bruttó tény rendszerterhelés",
-    gross_est:     "Bruttó rendszerterhelés becslés (dayahead)",
-    net_actual:    "Nettó rendszerterhelés tény - üzemirányítási",
-    net_est:       "Nettó rendszerterhelés becslés (dayahead)",
-    net_load:      "Nettó terhelés",
     net_plan_gen:  "Nettó terv rendszertermelés",
-    net_plan_load: "Nettó terv rendszerterhelés",
     gross_plan:    "Bruttó terv rendszerterhelés",
     // Production (chart 4401) — exact MAVIR column names.
     prod_gross_plan:   "Bruttó terv erőművi termelés",
     prod_gross_actual: "Bruttó tény erőművi termelés",
-    prod_net_plan:     "Nettó terv erőművi termelés",
-    prod_net_actual:   "Nettó hazai termelés tény",
   };
   const COLORS = {
-    gross_actual:  "#5b8ff9", gross_est: "#36d1dc",
-    net_actual:    "#ff9f40", net_est: "#e6d13a",
-    net_load:      "#4bd865", net_plan_gen: "#ff7fbf",
-    net_plan_load: "#b57bff", gross_plan: "#c98a5e",
-    prod_gross_actual: "#f2545b", prod_gross_plan: "#f6a821",
-    prod_net_plan:     "#8fd14f", prod_net_actual: "#26c6da",
+    gross_actual:  "#5b8ff9", net_plan_gen: "#ff7fbf",
+    gross_plan:    "#c98a5e",
+    prod_gross_plan: "#f6a821", prod_gross_actual: "#f2545b",
   };
   const KEYS = Object.keys(LABELS);
-  // Series drawn on load; users can toggle the rest (persisted per browser).
-  // Pessimistic default: max load (gross_actual→gross_est) + generation
-  // (prod_gross_actual past → prod_gross_plan future).
-  const DEFAULT_ON = new Set([
-    "gross_actual", "gross_est", "prod_gross_actual", "prod_gross_plan",
-  ]);
+  // All curated series are drawn on load; still individually toggleable.
+  const DEFAULT_ON = new Set(KEYS);
   // Actual columns: where these go null marks the present moment ("Most").
-  const ACTUAL_KEYS = ["gross_actual", "net_actual", "net_load", "prod_gross_actual"];
+  const ACTUAL_KEYS = ["gross_actual", "prod_gross_actual"];
 
   // Persist which series are visible (by stable key, not label/index).
-  const STORE_KEY = "mavir.series.v1";
+  // v2: curated series set changed — old stored visibility is discarded.
+  const STORE_KEY = "mavir.series.v2";
   function loadVisibility() {
     try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch { return {}; }
   }
