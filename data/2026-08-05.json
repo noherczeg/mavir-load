@@ -5,7 +5,7 @@
     {
       "t": "2026-08-05T00:00:00+02:00",
       "gross_est": 5481.23,
-      "net_plan_gen": 5470.414,
+      "net_plan_gen": 5474.214,
       "net_plan_load": 5237.568,
       "gross_actual": null,
       "gross_plan": 5595.52,
@@ -13,21 +13,65 @@
       "net_actual": null,
       "net_est": 4848.927,
       "prod_gross_plan": 2194.22,
-      "prod_net_plan": 2092.128
+      "prod_net_plan": 2095.928
     },
     {
       "t": "2026-08-05T00:15:00+02:00",
-      "gross_est": 5367.6,
+      "gross_est": 5325.13,
       "net_plan_gen": null,
       "net_plan_load": null,
       "gross_actual": null,
       "gross_plan": null,
       "net_load": null,
       "net_actual": null,
-      "net_est": 4735.238
+      "net_est": 4659.556
     },
     {
       "t": "2026-08-05T00:30:00+02:00",
+      "gross_est": 5203.42,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4567.669
+    },
+    {
+      "t": "2026-08-05T00:45:00+02:00",
+      "gross_est": 5088.96,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4472.925
+    },
+    {
+      "t": "2026-08-05T01:00:00+02:00",
+      "gross_est": 4981.76,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4375.325
+    },
+    {
+      "t": "2026-08-05T01:15:00+02:00",
+      "gross_est": 4882.52,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4276.952
+    },
+    {
+      "t": "2026-08-05T01:30:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -38,5 +82,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-08-04T12:19:56.664088+02:00"
+  "updated": "2026-08-04T13:15:48.758493+02:00"
 }
