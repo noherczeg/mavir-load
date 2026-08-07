@@ -5,15 +5,15 @@
     {
       "t": "2026-08-08T00:00:00+02:00",
       "gross_est": 5178.01,
-      "net_plan_gen": 5182.16,
+      "net_plan_gen": 5183.56,
       "net_plan_load": 4983.443,
       "gross_actual": null,
-      "gross_plan": 5328.3,
+      "gross_plan": 5331.27,
       "net_load": null,
       "net_actual": null,
       "net_est": 4784.885,
-      "prod_gross_plan": 1653.1,
-      "prod_net_plan": 1529.211
+      "prod_gross_plan": 1656.77,
+      "prod_net_plan": 1530.783
     },
     {
       "t": "2026-08-08T00:15:00+02:00",
@@ -297,7 +297,9 @@
       "gross_plan": 4365.18,
       "net_load": null,
       "net_actual": null,
-      "net_est": 4115.528
+      "net_est": 4115.528,
+      "prod_gross_plan": 1019.18,
+      "prod_net_plan": 949.102
     },
     {
       "t": "2026-08-08T05:45:00+02:00",
@@ -308,10 +310,38 @@
       "gross_plan": 4328.29,
       "net_load": null,
       "net_actual": null,
-      "net_est": 4104.983
+      "net_est": 4104.983,
+      "prod_gross_plan": 1037.29,
+      "prod_net_plan": 970.787
     },
     {
       "t": "2026-08-08T06:00:00+02:00",
+      "gross_est": 4284.34,
+      "net_plan_gen": 4249.289,
+      "net_plan_load": 4185.409,
+      "gross_actual": null,
+      "gross_plan": 4341.06,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4085.038,
+      "prod_gross_plan": 1100.06,
+      "prod_net_plan": 1040.976
+    },
+    {
+      "t": "2026-08-08T06:15:00+02:00",
+      "gross_est": 4291.85,
+      "net_plan_gen": 4219.52,
+      "net_plan_load": 4234.229,
+      "gross_actual": null,
+      "gross_plan": 4339.22,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4058.762,
+      "prod_gross_plan": 1209.82,
+      "prod_net_plan": 1142.965
+    },
+    {
+      "t": "2026-08-08T06:30:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -322,5 +352,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-08-07T17:45:56.469726+02:00"
+  "updated": "2026-08-07T18:15:22.764323+02:00"
 }
