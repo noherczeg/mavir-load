@@ -4,6 +4,30 @@
   "points": [
     {
       "t": "2026-08-12T00:00:00+02:00",
+      "gross_est": 5158.77,
+      "net_plan_gen": 5186.316,
+      "net_plan_load": 5082.321,
+      "gross_actual": null,
+      "gross_plan": 5332.94,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4865.944,
+      "prod_gross_plan": 2017.64,
+      "prod_net_plan": 1897.648
+    },
+    {
+      "t": "2026-08-12T00:15:00+02:00",
+      "gross_est": 5040.53,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4731.492
+    },
+    {
+      "t": "2026-08-12T00:30:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -14,5 +38,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-08-11T11:46:21.984961+02:00"
+  "updated": "2026-08-11T12:16:31.573011+02:00"
 }
