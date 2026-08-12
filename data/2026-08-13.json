@@ -5,10 +5,10 @@
     {
       "t": "2026-08-13T00:00:00+02:00",
       "gross_est": 4939.89,
-      "net_plan_gen": 4943.571,
+      "net_plan_gen": 4941.171,
       "net_plan_load": 4784.186,
       "gross_actual": null,
-      "gross_plan": 5115.87,
+      "gross_plan": 5113.47,
       "net_load": null,
       "net_actual": null,
       "net_est": 4696.034,
@@ -17,7 +17,7 @@
     },
     {
       "t": "2026-08-13T00:15:00+02:00",
-      "gross_est": 4764.22,
+      "gross_est": 4785.77,
       "net_plan_gen": null,
       "net_plan_load": null,
       "gross_actual": null,
@@ -28,7 +28,7 @@
     },
     {
       "t": "2026-08-13T00:30:00+02:00",
-      "gross_est": 4660.08,
+      "gross_est": 4675.52,
       "net_plan_gen": null,
       "net_plan_load": null,
       "gross_actual": null,
@@ -39,7 +39,7 @@
     },
     {
       "t": "2026-08-13T00:45:00+02:00",
-      "gross_est": 4563.12,
+      "gross_est": 4574.64,
       "net_plan_gen": null,
       "net_plan_load": null,
       "gross_actual": null,
@@ -50,7 +50,7 @@
     },
     {
       "t": "2026-08-13T01:00:00+02:00",
-      "gross_est": 4473.33,
+      "gross_est": 4483.12,
       "net_plan_gen": null,
       "net_plan_load": null,
       "gross_actual": null,
@@ -61,7 +61,7 @@
     },
     {
       "t": "2026-08-13T01:15:00+02:00",
-      "gross_est": 4390.99,
+      "gross_est": 4400.91,
       "net_plan_gen": null,
       "net_plan_load": null,
       "gross_actual": null,
@@ -72,6 +72,17 @@
     },
     {
       "t": "2026-08-13T01:30:00+02:00",
+      "gross_est": 4327.73,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4166.825
+    },
+    {
+      "t": "2026-08-13T01:45:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -82,5 +93,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-08-12T13:15:34.304835+02:00"
+  "updated": "2026-08-12T13:44:13.688757+02:00"
 }
