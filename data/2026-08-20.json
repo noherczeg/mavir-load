@@ -5,15 +5,15 @@
     {
       "t": "2026-08-20T00:00:00+02:00",
       "gross_est": 4717.34,
-      "net_plan_gen": 4622.792,
+      "net_plan_gen": 4627.292,
       "net_plan_load": 4445.044,
       "gross_actual": null,
-      "gross_plan": 4756.37,
+      "gross_plan": 4765.24,
       "net_load": null,
       "net_actual": null,
       "net_est": 4550.321,
-      "prod_gross_plan": 2020.17,
-      "prod_net_plan": 1928.624
+      "prod_gross_plan": 2025.54,
+      "prod_net_plan": 1933.996
     },
     {
       "t": "2026-08-20T00:15:00+02:00",
@@ -284,7 +284,9 @@
       "gross_plan": 3821.14,
       "net_load": null,
       "net_actual": null,
-      "net_est": 3690.972
+      "net_est": 3690.972,
+      "prod_gross_plan": 1866.64,
+      "prod_net_plan": 1744.379
     },
     {
       "t": "2026-08-20T05:30:00+02:00",
@@ -295,10 +297,38 @@
       "gross_plan": 3765.63,
       "net_load": null,
       "net_actual": null,
-      "net_est": 3666.012
+      "net_est": 3666.012,
+      "prod_gross_plan": 1887.53,
+      "prod_net_plan": 1759.481
     },
     {
       "t": "2026-08-20T05:45:00+02:00",
+      "gross_est": 3595.68,
+      "net_plan_gen": 3511.778,
+      "net_plan_load": 3453.23,
+      "gross_actual": null,
+      "gross_plan": 3677.88,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 3637.141,
+      "prod_gross_plan": 1893.68,
+      "prod_net_plan": 1774.021
+    },
+    {
+      "t": "2026-08-20T06:00:00+02:00",
+      "gross_est": 3545.52,
+      "net_plan_gen": 3421.727,
+      "net_plan_load": 3424.781,
+      "gross_actual": null,
+      "gross_plan": 3593.88,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 3604.359,
+      "prod_gross_plan": 1973.08,
+      "prod_net_plan": 1866.029
+    },
+    {
+      "t": "2026-08-20T06:15:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -309,5 +339,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-08-19T17:40:32.088691+02:00"
+  "updated": "2026-08-19T18:05:21.425874+02:00"
 }
