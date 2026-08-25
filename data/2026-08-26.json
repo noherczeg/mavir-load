@@ -5,40 +5,62 @@
     {
       "t": "2026-08-26T00:00:00+02:00",
       "gross_est": 4817.36,
-      "net_plan_gen": 4798.634,
-      "net_plan_load": 4631.984,
+      "net_plan_gen": 4805.634,
+      "net_plan_load": 4641.984,
       "gross_actual": null,
-      "gross_plan": 5004.68,
+      "gross_plan": 5011.68,
       "net_load": null,
       "net_actual": null,
       "net_est": 4525.178,
-      "prod_gross_plan": 2928.18,
-      "prod_net_plan": 2754.841
+      "prod_gross_plan": 2929.68,
+      "prod_net_plan": 2756.341
     },
     {
       "t": "2026-08-26T00:15:00+02:00",
-      "gross_est": 4733.77,
+      "gross_est": 4883.05,
       "net_plan_gen": null,
       "net_plan_load": null,
       "gross_actual": null,
       "gross_plan": null,
       "net_load": null,
       "net_actual": null,
-      "net_est": 4399.776
+      "net_est": 4461.208
     },
     {
       "t": "2026-08-26T00:30:00+02:00",
-      "gross_est": 4642.16,
+      "gross_est": 4794.06,
       "net_plan_gen": null,
       "net_plan_load": null,
       "gross_actual": null,
       "gross_plan": null,
       "net_load": null,
       "net_actual": null,
-      "net_est": 4310.078
+      "net_est": 4371.46
     },
     {
       "t": "2026-08-26T00:45:00+02:00",
+      "gross_est": 4710.77,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4289.94
+    },
+    {
+      "t": "2026-08-26T01:00:00+02:00",
+      "gross_est": 4633.19,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4216.649
+    },
+    {
+      "t": "2026-08-26T01:15:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -49,5 +71,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-08-25T12:41:41.950028+02:00"
+  "updated": "2026-08-25T13:05:48.682670+02:00"
 }
