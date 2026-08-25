@@ -1,0 +1,31 @@
+{
+  "date": "2026-08-26",
+  "tz": "Europe/Budapest",
+  "points": [
+    {
+      "t": "2026-08-26T00:00:00+02:00",
+      "gross_est": 4817.36,
+      "net_plan_gen": 4796.708,
+      "net_plan_load": 4631.984,
+      "gross_actual": null,
+      "gross_plan": 5002.28,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4525.178,
+      "prod_gross_plan": 2925.78,
+      "prod_net_plan": 2752.431
+    },
+    {
+      "t": "2026-08-26T00:15:00+02:00",
+      "gross_est": null,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": null
+    }
+  ],
+  "updated": "2026-08-25T12:06:52.947917+02:00"
+}
