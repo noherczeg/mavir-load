@@ -6,18 +6,18 @@
       "t": "2026-08-27T00:00:00+02:00",
       "gross_est": 5034.26,
       "net_plan_gen": 4861.841,
-      "net_plan_load": 4684.665,
+      "net_plan_load": 4670.665,
       "gross_actual": null,
       "gross_plan": 5099.36,
       "net_load": null,
       "net_actual": null,
       "net_est": 4565.064,
-      "prod_gross_plan": 3064.16,
+      "prod_gross_plan": 3064.26,
       "prod_net_plan": 2846.061
     },
     {
       "t": "2026-08-27T00:15:00+02:00",
-      "gross_est": 4930.55,
+      "gross_est": 4932.16,
       "net_plan_gen": null,
       "net_plan_load": null,
       "gross_actual": null,
@@ -28,7 +28,7 @@
     },
     {
       "t": "2026-08-27T00:30:00+02:00",
-      "gross_est": 4832.88,
+      "gross_est": 4834.72,
       "net_plan_gen": null,
       "net_plan_load": null,
       "gross_actual": null,
@@ -39,7 +39,7 @@
     },
     {
       "t": "2026-08-27T00:45:00+02:00",
-      "gross_est": 4743.49,
+      "gross_est": 4748.01,
       "net_plan_gen": null,
       "net_plan_load": null,
       "gross_actual": null,
@@ -50,7 +50,7 @@
     },
     {
       "t": "2026-08-27T01:00:00+02:00",
-      "gross_est": 4662.38,
+      "gross_est": 4672.02,
       "net_plan_gen": null,
       "net_plan_load": null,
       "gross_actual": null,
@@ -61,6 +61,28 @@
     },
     {
       "t": "2026-08-27T01:15:00+02:00",
+      "gross_est": 4605.75,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4165.118
+    },
+    {
+      "t": "2026-08-27T01:30:00+02:00",
+      "gross_est": 4545.14,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4101.364
+    },
+    {
+      "t": "2026-08-27T01:45:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -71,5 +93,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-08-26T13:07:08.401496+02:00"
+  "updated": "2026-08-26T13:39:48.763776+02:00"
 }
