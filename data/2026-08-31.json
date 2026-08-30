@@ -5,15 +5,15 @@
     {
       "t": "2026-08-31T00:00:00+02:00",
       "gross_est": 4551.21,
-      "net_plan_gen": 4336.884,
+      "net_plan_gen": 4323.484,
       "net_plan_load": 4343.644,
       "gross_actual": null,
-      "gross_plan": 4668.53,
+      "gross_plan": 4654.03,
       "net_load": null,
       "net_actual": null,
       "net_est": 4225.612,
-      "prod_gross_plan": 2745.03,
-      "prod_net_plan": 2431.567
+      "prod_gross_plan": 2746.53,
+      "prod_net_plan": 2433.667
     },
     {
       "t": "2026-08-31T00:15:00+02:00",
@@ -440,7 +440,9 @@
       "gross_plan": 4579.12,
       "net_load": null,
       "net_actual": null,
-      "net_est": 4613.628
+      "net_est": 4613.628,
+      "prod_gross_plan": 4370.02,
+      "prod_net_plan": 4581.991
     },
     {
       "t": "2026-08-31T08:30:00+02:00",
@@ -451,10 +453,38 @@
       "gross_plan": 4610.79,
       "net_load": null,
       "net_actual": null,
-      "net_est": 4540.763
+      "net_est": 4540.763,
+      "prod_gross_plan": 4614.39,
+      "prod_net_plan": 4913.118
     },
     {
       "t": "2026-08-31T08:45:00+02:00",
+      "gross_est": 4838.03,
+      "net_plan_gen": 4053.439,
+      "net_plan_load": 5016.172,
+      "gross_actual": null,
+      "gross_plan": 4563.34,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4483.288,
+      "prod_gross_plan": 4881.14,
+      "prod_net_plan": 5247.275
+    },
+    {
+      "t": "2026-08-31T09:00:00+02:00",
+      "gross_est": 4797.06,
+      "net_plan_gen": 4025.301,
+      "net_plan_load": 5053.629,
+      "gross_actual": null,
+      "gross_plan": 4532.66,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4441.204,
+      "prod_gross_plan": 5071.96,
+      "prod_net_plan": 5556.081
+    },
+    {
+      "t": "2026-08-31T09:15:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -465,5 +495,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-08-30T20:32:47.834848+02:00"
+  "updated": "2026-08-30T21:01:23.271005+02:00"
 }
