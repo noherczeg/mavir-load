@@ -5,15 +5,15 @@
     {
       "t": "2026-09-01T00:00:00+02:00",
       "gross_est": 5120.44,
-      "net_plan_gen": 5092.084,
+      "net_plan_gen": 5097.084,
       "net_plan_load": 4892.013,
       "gross_actual": null,
-      "gross_plan": 5379.03,
+      "gross_plan": 5383.23,
       "net_load": null,
       "net_actual": null,
       "net_est": 4799.949,
-      "prod_gross_plan": 3197.53,
-      "prod_net_plan": 2936.204
+      "prod_gross_plan": 3198.53,
+      "prod_net_plan": 2938.704
     },
     {
       "t": "2026-09-01T00:15:00+02:00",
@@ -466,7 +466,9 @@
       "gross_plan": 4944.14,
       "net_load": null,
       "net_actual": null,
-      "net_est": 4731.392
+      "net_est": 4731.392,
+      "prod_gross_plan": 4710.34,
+      "prod_net_plan": 4946.664
     },
     {
       "t": "2026-09-01T09:00:00+02:00",
@@ -477,10 +479,38 @@
       "gross_plan": 4849.22,
       "net_load": null,
       "net_actual": null,
-      "net_est": 4656.112
+      "net_est": 4656.112,
+      "prod_gross_plan": 4897.92,
+      "prod_net_plan": 5244.843
     },
     {
       "t": "2026-09-01T09:15:00+02:00",
+      "gross_est": 4886.35,
+      "net_plan_gen": 3945.829,
+      "net_plan_load": 5157.106,
+      "gross_actual": null,
+      "gross_plan": 4591.5,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4581.422,
+      "prod_gross_plan": 5227.0,
+      "prod_net_plan": 5644.299
+    },
+    {
+      "t": "2026-09-01T09:30:00+02:00",
+      "gross_est": 4840.85,
+      "net_plan_gen": 3959.771,
+      "net_plan_load": 5171.48,
+      "gross_actual": null,
+      "gross_plan": 4585.46,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4519.443,
+      "prod_gross_plan": 5374.26,
+      "prod_net_plan": 5907.918
+    },
+    {
+      "t": "2026-09-01T09:45:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -491,5 +521,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-08-31T21:01:33.664784+02:00"
+  "updated": "2026-08-31T21:30:54.105775+02:00"
 }
