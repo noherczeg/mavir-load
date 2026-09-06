@@ -5,15 +5,15 @@
     {
       "t": "2026-09-07T00:00:00+02:00",
       "gross_est": 4307.8,
-      "net_plan_gen": 4064.067,
-      "net_plan_load": 4111.111,
+      "net_plan_gen": 4081.967,
+      "net_plan_load": 4109.111,
       "gross_actual": null,
-      "gross_plan": 4320.15,
+      "gross_plan": 4338.05,
       "net_load": null,
       "net_actual": null,
       "net_est": 3937.402,
-      "prod_gross_plan": 2631.55,
-      "prod_net_plan": 2395.859
+      "prod_gross_plan": 2649.45,
+      "prod_net_plan": 2413.759
     },
     {
       "t": "2026-09-07T00:15:00+02:00",
@@ -492,7 +492,9 @@
       "gross_plan": 3945.8,
       "net_load": null,
       "net_actual": null,
-      "net_est": 3914.733
+      "net_est": 3914.733,
+      "prod_gross_plan": 5240.1,
+      "prod_net_plan": 5873.171
     },
     {
       "t": "2026-09-07T09:30:00+02:00",
@@ -503,10 +505,38 @@
       "gross_plan": 3931.02,
       "net_load": null,
       "net_actual": null,
-      "net_est": 3859.929
+      "net_est": 3859.929,
+      "prod_gross_plan": 5405.02,
+      "prod_net_plan": 6123.966
     },
     {
       "t": "2026-09-07T09:45:00+02:00",
+      "gross_est": 4231.48,
+      "net_plan_gen": 3683.366,
+      "net_plan_load": 4896.963,
+      "gross_actual": null,
+      "gross_plan": 4153.39,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 3818.849,
+      "prod_gross_plan": 5516.49,
+      "prod_net_plan": 6284.566
+    },
+    {
+      "t": "2026-09-07T10:00:00+02:00",
+      "gross_est": 4182.49,
+      "net_plan_gen": 3683.901,
+      "net_plan_load": 4900.713,
+      "gross_actual": null,
+      "gross_plan": 4153.58,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 3791.494,
+      "prod_gross_plan": 5579.58,
+      "prod_net_plan": 6434.156
+    },
+    {
+      "t": "2026-09-07T10:15:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -517,5 +547,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-09-06T21:31:02.974350+02:00"
+  "updated": "2026-09-06T22:01:38.430167+02:00"
 }
