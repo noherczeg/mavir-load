@@ -5,15 +5,15 @@
     {
       "t": "2026-09-20T00:00:00+02:00",
       "gross_est": 4310.39,
-      "net_plan_gen": 3975.268,
+      "net_plan_gen": 3978.668,
       "net_plan_load": 4090.186,
       "gross_actual": null,
-      "gross_plan": 4181.46,
+      "gross_plan": 4184.16,
       "net_load": null,
       "net_actual": null,
       "net_est": 3966.231,
-      "prod_gross_plan": 2197.46,
-      "prod_net_plan": 2021.475
+      "prod_gross_plan": 2200.16,
+      "prod_net_plan": 2025.075
     },
     {
       "t": "2026-09-20T00:15:00+02:00",
@@ -362,7 +362,9 @@
       "gross_plan": 3777.72,
       "net_load": null,
       "net_actual": null,
-      "net_est": 3655.398
+      "net_est": 3655.398,
+      "prod_gross_plan": 2229.12,
+      "prod_net_plan": 2025.597
     },
     {
       "t": "2026-09-20T07:00:00+02:00",
@@ -373,10 +375,38 @@
       "gross_plan": 3741.84,
       "net_load": null,
       "net_actual": null,
-      "net_est": 3673.376
+      "net_est": 3673.376,
+      "prod_gross_plan": 2274.84,
+      "prod_net_plan": 2155.367
     },
     {
       "t": "2026-09-20T07:15:00+02:00",
+      "gross_est": 3924.04,
+      "net_plan_gen": 3339.871,
+      "net_plan_load": 3811.719,
+      "gross_actual": null,
+      "gross_plan": 3671.6,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 3687.927,
+      "prod_gross_plan": 2458.4,
+      "prod_net_plan": 2346.212
+    },
+    {
+      "t": "2026-09-20T07:30:00+02:00",
+      "gross_est": 3935.09,
+      "net_plan_gen": 3342.889,
+      "net_plan_load": 3886.413,
+      "gross_actual": null,
+      "gross_plan": 3658.27,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 3691.67,
+      "prod_gross_plan": 2598.77,
+      "prod_net_plan": 2588.519
+    },
+    {
+      "t": "2026-09-20T07:45:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -387,5 +417,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-09-19T19:01:23.238061+02:00"
+  "updated": "2026-09-19T19:30:54.434462+02:00"
 }
