@@ -5,15 +5,15 @@
     {
       "t": "2026-09-20T00:00:00+02:00",
       "gross_est": 4310.39,
-      "net_plan_gen": 4000.568,
-      "net_plan_load": 4092.986,
+      "net_plan_gen": 4026.768,
+      "net_plan_load": 4098.486,
       "gross_actual": null,
-      "gross_plan": 4203.46,
+      "gross_plan": 4207.86,
       "net_load": null,
       "net_actual": null,
       "net_est": 3966.231,
-      "prod_gross_plan": 2211.56,
-      "prod_net_plan": 2041.675
+      "prod_gross_plan": 2223.86,
+      "prod_net_plan": 2071.375
     },
     {
       "t": "2026-09-20T00:15:00+02:00",
@@ -492,7 +492,9 @@
       "gross_plan": 3852.53,
       "net_load": null,
       "net_actual": null,
-      "net_est": 3622.52
+      "net_est": 3622.52,
+      "prod_gross_plan": 4228.93,
+      "prod_net_plan": 4788.036
     },
     {
       "t": "2026-09-20T09:30:00+02:00",
@@ -503,10 +505,38 @@
       "gross_plan": 3868.54,
       "net_load": null,
       "net_actual": null,
-      "net_est": 3632.737
+      "net_est": 3632.737,
+      "prod_gross_plan": 4340.74,
+      "prod_net_plan": 4942.086
     },
     {
       "t": "2026-09-20T09:45:00+02:00",
+      "gross_est": 3834.41,
+      "net_plan_gen": 3172.819,
+      "net_plan_load": 4310.903,
+      "gross_actual": null,
+      "gross_plan": 3677.99,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 3634.709,
+      "prod_gross_plan": 4265.59,
+      "prod_net_plan": 4970.452
+    },
+    {
+      "t": "2026-09-20T10:00:00+02:00",
+      "gross_est": 3791.32,
+      "net_plan_gen": 3139.354,
+      "net_plan_load": 4373.359,
+      "gross_actual": null,
+      "gross_plan": 3627.38,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 3628.437,
+      "prod_gross_plan": 4304.78,
+      "prod_net_plan": 5108.081
+    },
+    {
+      "t": "2026-09-20T10:15:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -517,5 +547,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-09-19T21:31:02.940492+02:00"
+  "updated": "2026-09-19T22:01:36.165955+02:00"
 }
