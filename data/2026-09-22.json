@@ -5,40 +5,62 @@
     {
       "t": "2026-09-22T00:00:00+02:00",
       "gross_est": 4704.6,
-      "net_plan_gen": 4786.534,
-      "net_plan_load": 4549.606,
+      "net_plan_gen": 4776.234,
+      "net_plan_load": 4543.606,
       "gross_actual": null,
-      "gross_plan": 4922.86,
+      "gross_plan": 4912.06,
       "net_load": null,
       "net_actual": null,
       "net_est": 4370.603,
-      "prod_gross_plan": 2573.86,
-      "prod_net_plan": 2473.456
+      "prod_gross_plan": 2577.66,
+      "prod_net_plan": 2473.856
     },
     {
       "t": "2026-09-22T00:15:00+02:00",
-      "gross_est": 4603.7,
+      "gross_est": 4606.45,
       "net_plan_gen": null,
       "net_plan_load": null,
       "gross_actual": null,
       "gross_plan": null,
       "net_load": null,
       "net_actual": null,
-      "net_est": 4301.467
+      "net_est": 4325.571
     },
     {
       "t": "2026-09-22T00:30:00+02:00",
-      "gross_est": 4518.27,
+      "gross_est": 4525.7,
       "net_plan_gen": null,
       "net_plan_load": null,
       "gross_actual": null,
       "gross_plan": null,
       "net_load": null,
       "net_actual": null,
-      "net_est": 4227.948
+      "net_est": 4250.286
     },
     {
       "t": "2026-09-22T00:45:00+02:00",
+      "gross_est": 4446.25,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4174.469
+    },
+    {
+      "t": "2026-09-22T01:00:00+02:00",
+      "gross_est": 4368.1,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4098.122
+    },
+    {
+      "t": "2026-09-22T01:15:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -49,5 +71,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-09-21T12:34:09.071699+02:00"
+  "updated": "2026-09-21T13:01:57.231437+02:00"
 }
