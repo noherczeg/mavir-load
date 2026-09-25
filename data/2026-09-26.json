@@ -5,14 +5,14 @@
     {
       "t": "2026-09-26T00:00:00+02:00",
       "gross_est": 4906.17,
-      "net_plan_gen": 4611.813,
-      "net_plan_load": 4591.095,
+      "net_plan_gen": 4630.913,
+      "net_plan_load": 4589.595,
       "gross_actual": null,
-      "gross_plan": 4813.15,
+      "gross_plan": 4835.35,
       "net_load": null,
       "net_actual": null,
       "net_est": 4555.811,
-      "prod_gross_plan": 2622.75,
+      "prod_gross_plan": 2626.15,
       "prod_net_plan": 2443.171
     },
     {
@@ -589,6 +589,32 @@
     },
     {
       "t": "2026-09-26T11:15:00+02:00",
+      "gross_est": 3945.51,
+      "net_plan_gen": 2804.703,
+      "net_plan_load": 4665.49,
+      "gross_actual": null,
+      "gross_plan": 3305.25,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 3625.753,
+      "prod_gross_plan": 5717.75,
+      "prod_net_plan": 6796.699
+    },
+    {
+      "t": "2026-09-26T11:30:00+02:00",
+      "gross_est": 3906.81,
+      "net_plan_gen": 2847.886,
+      "net_plan_load": 4681.011,
+      "gross_actual": null,
+      "gross_plan": 3334.98,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 3582.677,
+      "prod_gross_plan": 5731.98,
+      "prod_net_plan": 6857.429
+    },
+    {
+      "t": "2026-09-26T11:45:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -599,5 +625,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-09-25T23:01:38.506592+02:00"
+  "updated": "2026-09-25T23:32:03.565005+02:00"
 }
