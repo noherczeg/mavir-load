@@ -5,15 +5,15 @@
     {
       "t": "2026-09-27T00:00:00+02:00",
       "gross_est": 4394.67,
-      "net_plan_gen": 4259.3,
-      "net_plan_load": 4162.008,
+      "net_plan_gen": 4272.7,
+      "net_plan_load": 4169.008,
       "gross_actual": null,
-      "gross_plan": 4563.6,
+      "gross_plan": 4576.7,
       "net_load": null,
       "net_actual": null,
       "net_est": 4101.758,
       "prod_gross_plan": 2672.0,
-      "prod_net_plan": 2380.321
+      "prod_net_plan": 2380.221
     },
     {
       "t": "2026-09-27T00:15:00+02:00",
@@ -336,7 +336,9 @@
       "gross_plan": 3956.53,
       "net_load": null,
       "net_actual": null,
-      "net_est": 3821.655
+      "net_est": 3821.655,
+      "prod_gross_plan": 2404.63,
+      "prod_net_plan": 2195.404
     },
     {
       "t": "2026-09-27T06:30:00+02:00",
@@ -347,10 +349,38 @@
       "gross_plan": 3997.9,
       "net_load": null,
       "net_actual": null,
-      "net_est": 3866.771
+      "net_est": 3866.771,
+      "prod_gross_plan": 2412.4,
+      "prod_net_plan": 2210.012
     },
     {
       "t": "2026-09-27T06:45:00+02:00",
+      "gross_est": 4015.33,
+      "net_plan_gen": 3722.614,
+      "net_plan_load": 3811.998,
+      "gross_actual": null,
+      "gross_plan": 3971.71,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 3898.322,
+      "prod_gross_plan": 2461.21,
+      "prod_net_plan": 2286.287
+    },
+    {
+      "t": "2026-09-27T07:00:00+02:00",
+      "gross_est": 4060.38,
+      "net_plan_gen": 3755.857,
+      "net_plan_load": 3895.425,
+      "gross_actual": null,
+      "gross_plan": 4003.72,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 3916.307,
+      "prod_gross_plan": 2517.82,
+      "prod_net_plan": 2403.76
+    },
+    {
+      "t": "2026-09-27T07:15:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -361,5 +391,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-09-26T18:34:13.331447+02:00"
+  "updated": "2026-09-26T19:01:09.314712+02:00"
 }
