@@ -5,15 +5,15 @@
     {
       "t": "2026-09-29T00:00:00+02:00",
       "gross_est": 4762.02,
-      "net_plan_gen": 4502.199,
+      "net_plan_gen": 4673.805,
       "net_plan_load": 4643.904,
       "gross_actual": null,
-      "gross_plan": 4828.55,
+      "gross_plan": 4994.15,
       "net_load": null,
       "net_actual": null,
       "net_est": 4473.701,
-      "prod_gross_plan": 2780.25,
-      "prod_net_plan": 2469.174
+      "prod_gross_plan": 2779.75,
+      "prod_net_plan": 2473.874
     },
     {
       "t": "2026-09-29T00:15:00+02:00",
@@ -414,7 +414,9 @@
       "gross_plan": 5113.89,
       "net_load": null,
       "net_actual": null,
-      "net_est": 4970.667
+      "net_est": 4970.667,
+      "prod_gross_plan": 3403.19,
+      "prod_net_plan": 3475.183
     },
     {
       "t": "2026-09-29T08:00:00+02:00",
@@ -425,10 +427,38 @@
       "gross_plan": 4942.77,
       "net_load": null,
       "net_actual": null,
-      "net_est": 4887.289
+      "net_est": 4887.289,
+      "prod_gross_plan": 3668.67,
+      "prod_net_plan": 3868.372
     },
     {
       "t": "2026-09-29T08:15:00+02:00",
+      "gross_est": 5124.04,
+      "net_plan_gen": 4179.073,
+      "net_plan_load": 5186.81,
+      "gross_actual": null,
+      "gross_plan": 4642.26,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4785.6,
+      "prod_gross_plan": 4097.96,
+      "prod_net_plan": 4252.105
+    },
+    {
+      "t": "2026-09-29T08:30:00+02:00",
+      "gross_est": 5021.91,
+      "net_plan_gen": 3979.142,
+      "net_plan_load": 5155.227,
+      "gross_actual": null,
+      "gross_plan": 4450.1,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4682.235,
+      "prod_gross_plan": 4390.1,
+      "prod_net_plan": 4650.353
+    },
+    {
+      "t": "2026-09-29T08:45:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -439,5 +469,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-09-28T20:02:25.361818+02:00"
+  "updated": "2026-09-28T20:40:44.584673+02:00"
 }
