@@ -4,6 +4,19 @@
   "points": [
     {
       "t": "2026-09-29T00:00:00+02:00",
+      "gross_est": 4762.02,
+      "net_plan_gen": 4641.799,
+      "net_plan_load": 4662.946,
+      "gross_actual": null,
+      "gross_plan": 4951.58,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 4473.701,
+      "prod_gross_plan": 2694.88,
+      "prod_net_plan": 2397.638
+    },
+    {
+      "t": "2026-09-29T00:15:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -14,5 +27,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-09-28T11:45:36.205681+02:00"
+  "updated": "2026-09-28T12:02:45.828731+02:00"
 }
