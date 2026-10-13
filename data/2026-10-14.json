@@ -5,10 +5,10 @@
     {
       "t": "2026-10-14T00:00:00+02:00",
       "gross_est": 5123.99,
-      "net_plan_gen": 5507.618,
-      "net_plan_load": 4822.851,
+      "net_plan_gen": 5506.018,
+      "net_plan_load": 4827.451,
       "gross_actual": null,
-      "gross_plan": 5652.527,
+      "gross_plan": 5650.927,
       "net_load": null,
       "net_actual": null,
       "net_est": 4807.191,
@@ -18,10 +18,10 @@
     {
       "t": "2026-10-14T00:15:00+02:00",
       "gross_est": 5004.53,
-      "net_plan_gen": 4825.727,
+      "net_plan_gen": 4826.727,
       "net_plan_load": 4593.425,
       "gross_actual": null,
-      "gross_plan": 4972.343,
+      "gross_plan": 4973.343,
       "net_load": null,
       "net_actual": null,
       "net_est": 4717.973,
@@ -31,10 +31,10 @@
     {
       "t": "2026-10-14T00:30:00+02:00",
       "gross_est": 4916.48,
-      "net_plan_gen": 4738.089,
+      "net_plan_gen": 4738.589,
       "net_plan_load": 4505.913,
       "gross_actual": null,
-      "gross_plan": 4884.697,
+      "gross_plan": 4885.197,
       "net_load": null,
       "net_actual": null,
       "net_est": 4627.414,
@@ -44,10 +44,10 @@
     {
       "t": "2026-10-14T00:45:00+02:00",
       "gross_est": 4829.43,
-      "net_plan_gen": 4617.48,
+      "net_plan_gen": 4618.38,
       "net_plan_load": 4437.851,
       "gross_actual": null,
-      "gross_plan": 4764.072,
+      "gross_plan": 4764.972,
       "net_load": null,
       "net_actual": null,
       "net_est": 4545.445,
@@ -57,10 +57,10 @@
     {
       "t": "2026-10-14T01:00:00+02:00",
       "gross_est": 4743.37,
-      "net_plan_gen": 4571.184,
+      "net_plan_gen": 4570.984,
       "net_plan_load": 4352.208,
       "gross_actual": null,
-      "gross_plan": 4717.768,
+      "gross_plan": 4717.568,
       "net_load": null,
       "net_actual": null,
       "net_est": 4472.064,
@@ -122,10 +122,10 @@
     {
       "t": "2026-10-14T02:15:00+02:00",
       "gross_est": 4472.55,
-      "net_plan_gen": 4129.664,
+      "net_plan_gen": 4128.864,
       "net_plan_load": 4102.87,
       "gross_actual": null,
-      "gross_plan": 4275.768,
+      "gross_plan": 4274.968,
       "net_load": null,
       "net_actual": null,
       "net_est": 4228.849,
@@ -174,10 +174,10 @@
     {
       "t": "2026-10-14T03:15:00+02:00",
       "gross_est": 4429.05,
-      "net_plan_gen": 4075.646,
+      "net_plan_gen": 4075.546,
       "net_plan_load": 4055.385,
       "gross_actual": null,
-      "gross_plan": 4221.792,
+      "gross_plan": 4221.692,
       "net_load": null,
       "net_actual": null,
       "net_est": 4206.019,
@@ -310,7 +310,9 @@
       "gross_plan": 4742.409,
       "net_load": null,
       "net_actual": null,
-      "net_est": 4843.539
+      "net_est": 4843.539,
+      "prod_gross_plan": 2543.409,
+      "prod_net_plan": 2263.983
     },
     {
       "t": "2026-10-14T06:00:00+02:00",
@@ -321,10 +323,38 @@
       "gross_plan": 4821.448,
       "net_load": null,
       "net_actual": null,
-      "net_est": 5022.097
+      "net_est": 5022.097,
+      "prod_gross_plan": 2561.448,
+      "prod_net_plan": 2281.037
     },
     {
       "t": "2026-10-14T06:15:00+02:00",
+      "gross_est": 5417.45,
+      "net_plan_gen": 4812.964,
+      "net_plan_load": 4891.696,
+      "gross_actual": null,
+      "gross_plan": 4959.611,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 5217.003,
+      "prod_gross_plan": 2598.611,
+      "prod_net_plan": 2316.15
+    },
+    {
+      "t": "2026-10-14T06:30:00+02:00",
+      "gross_est": 5606.63,
+      "net_plan_gen": 5030.381,
+      "net_plan_load": 5109.05,
+      "gross_actual": null,
+      "gross_plan": 5177.693,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 5383.302,
+      "prod_gross_plan": 2629.792,
+      "prod_net_plan": 2353.251
+    },
+    {
+      "t": "2026-10-14T06:45:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -335,5 +365,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-10-13T18:02:13.699001+02:00"
+  "updated": "2026-10-13T18:39:34.447519+02:00"
 }
