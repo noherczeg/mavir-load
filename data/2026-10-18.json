@@ -1296,10 +1296,10 @@
       "gross_est": 4741.02,
       "net_plan_gen": 4585.359,
       "net_plan_load": 4468.17,
-      "gross_actual": 4757.254,
+      "gross_actual": 4756.717,
       "gross_plan": 4725.399,
-      "net_load": 4598.153,
-      "net_actual": 4598.153,
+      "net_load": 4597.593,
+      "net_actual": 4597.593,
       "net_est": 4464.731,
       "prod_gross_plan": 2815.299,
       "prod_net_plan": 2532.82,
@@ -1310,41 +1310,43 @@
       "gross_est": 4684.44,
       "net_plan_gen": 4574.07,
       "net_plan_load": 4434.281,
-      "gross_actual": null,
+      "gross_actual": 4738.786,
       "gross_plan": 4714.021,
-      "net_load": null,
-      "net_actual": null,
+      "net_load": 4583.878,
+      "net_actual": 4583.878,
       "net_est": 4405.371,
       "prod_gross_plan": 2768.521,
       "prod_net_plan": 2502.06,
-      "prod_gross_actual": 2838.787
+      "prod_gross_actual": 2818.103
     },
     {
       "t": "2026-10-18T23:30:00+02:00",
       "gross_est": 4624.09,
       "net_plan_gen": 4519.034,
       "net_plan_load": 4379.424,
-      "gross_actual": null,
+      "gross_actual": 4685.531,
       "gross_plan": 4658.985,
-      "net_load": null,
-      "net_actual": null,
+      "net_load": 4529.788,
+      "net_actual": 4529.788,
       "net_est": 4346.491,
       "prod_gross_plan": 2808.185,
-      "prod_net_plan": 2532.412
+      "prod_net_plan": 2533.412,
+      "prod_gross_actual": 2821.85
     },
     {
       "t": "2026-10-18T23:45:00+02:00",
       "gross_est": 4559.64,
-      "net_plan_gen": 4533.979,
-      "net_plan_load": 4339.191,
-      "gross_actual": null,
-      "gross_plan": 4673.235,
-      "net_load": null,
-      "net_actual": null,
+      "net_plan_gen": 4519.879,
+      "net_plan_load": 4333.191,
+      "gross_actual": 4657.98,
+      "gross_plan": 4659.135,
+      "net_load": 4502.827,
+      "net_actual": 4502.827,
       "net_est": 4288.735,
       "prod_gross_plan": 2668.234,
-      "prod_net_plan": 2397.252
+      "prod_net_plan": 2394.652,
+      "prod_gross_actual": 2780.74
     }
   ],
-  "updated": "2026-10-18T23:01:10.064730+02:00"
+  "updated": "2026-10-18T23:31:25.525328+02:00"
 }
