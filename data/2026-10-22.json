@@ -5,14 +5,14 @@
     {
       "t": "2026-10-22T00:00:00+02:00",
       "gross_est": 5092.33,
-      "net_plan_gen": 5619.661,
+      "net_plan_gen": 5586.661,
       "net_plan_load": 4686.646,
       "gross_actual": null,
-      "gross_plan": 5765.627,
+      "gross_plan": 5732.627,
       "net_load": null,
       "net_actual": null,
       "net_est": 4715.011,
-      "prod_gross_plan": 2439.426,
+      "prod_gross_plan": 2440.526,
       "prod_net_plan": 2151.753
     },
     {
@@ -44,10 +44,10 @@
     {
       "t": "2026-10-22T00:45:00+02:00",
       "gross_est": 4820.91,
-      "net_plan_gen": 4445.834,
+      "net_plan_gen": 4445.734,
       "net_plan_load": 4379.556,
       "gross_actual": null,
-      "gross_plan": 4592.169,
+      "gross_plan": 4592.069,
       "net_load": null,
       "net_actual": null,
       "net_est": 4466.736,
@@ -135,10 +135,10 @@
     {
       "t": "2026-10-22T02:30:00+02:00",
       "gross_est": 4430.28,
-      "net_plan_gen": 4026.101,
+      "net_plan_gen": 4025.201,
       "net_plan_load": 4152.776,
       "gross_actual": null,
-      "gross_plan": 4172.571,
+      "gross_plan": 4171.672,
       "net_load": null,
       "net_actual": null,
       "net_est": 4093.016,
@@ -148,10 +148,10 @@
     {
       "t": "2026-10-22T02:45:00+02:00",
       "gross_est": 4413.86,
-      "net_plan_gen": 3967.38,
+      "net_plan_gen": 3966.58,
       "net_plan_load": 4101.794,
       "gross_actual": null,
-      "gross_plan": 4113.841,
+      "gross_plan": 4113.041,
       "net_load": null,
       "net_actual": null,
       "net_est": 4077.827,
@@ -161,10 +161,10 @@
     {
       "t": "2026-10-22T03:00:00+02:00",
       "gross_est": 4401.38,
-      "net_plan_gen": 3954.181,
+      "net_plan_gen": 3954.081,
       "net_plan_load": 4117.332,
       "gross_actual": null,
-      "gross_plan": 4100.639,
+      "gross_plan": 4100.539,
       "net_load": null,
       "net_actual": null,
       "net_est": 4072.833,
@@ -174,10 +174,10 @@
     {
       "t": "2026-10-22T03:15:00+02:00",
       "gross_est": 4393.77,
-      "net_plan_gen": 3953.164,
+      "net_plan_gen": 3953.064,
       "net_plan_load": 4086.879,
       "gross_actual": null,
-      "gross_plan": 4099.585,
+      "gross_plan": 4099.485,
       "net_load": null,
       "net_actual": null,
       "net_est": 4077.271,
@@ -213,10 +213,10 @@
     {
       "t": "2026-10-22T04:00:00+02:00",
       "gross_est": 4425.02,
-      "net_plan_gen": 3979.454,
+      "net_plan_gen": 3978.754,
       "net_plan_load": 4105.943,
       "gross_actual": null,
-      "gross_plan": 4125.634,
+      "gross_plan": 4124.934,
       "net_load": null,
       "net_actual": null,
       "net_est": 4126.575,
@@ -226,10 +226,10 @@
     {
       "t": "2026-10-22T04:15:00+02:00",
       "gross_est": 4454.09,
-      "net_plan_gen": 3908.215,
+      "net_plan_gen": 3905.715,
       "net_plan_load": 4020.626,
       "gross_actual": null,
-      "gross_plan": 4054.37,
+      "gross_plan": 4051.87,
       "net_load": null,
       "net_actual": null,
       "net_est": 4155.71,
@@ -355,6 +355,32 @@
     },
     {
       "t": "2026-10-22T06:45:00+02:00",
+      "gross_est": 5638.97,
+      "net_plan_gen": 5480.379,
+      "net_plan_load": 5278.803,
+      "gross_actual": null,
+      "gross_plan": 5628.032,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 5323.236,
+      "prod_gross_plan": 2739.632,
+      "prod_net_plan": 2570.812
+    },
+    {
+      "t": "2026-10-22T07:00:00+02:00",
+      "gross_est": 5750.08,
+      "net_plan_gen": 5534.081,
+      "net_plan_load": 5404.255,
+      "gross_actual": null,
+      "gross_plan": 5681.743,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 5438.931,
+      "prod_gross_plan": 2762.243,
+      "prod_net_plan": 2654.449
+    },
+    {
+      "t": "2026-10-22T07:15:00+02:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -365,5 +391,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-10-21T18:37:10.059602+02:00"
+  "updated": "2026-10-21T19:01:44.083633+02:00"
 }
