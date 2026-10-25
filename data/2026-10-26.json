@@ -5,14 +5,14 @@
     {
       "t": "2026-10-26T00:00:00+01:00",
       "gross_est": 4514.58,
-      "net_plan_gen": 4502.756,
+      "net_plan_gen": 4502.856,
       "net_plan_load": 4212.618,
       "gross_actual": null,
-      "gross_plan": 4640.829,
+      "gross_plan": 4640.929,
       "net_load": null,
       "net_actual": null,
       "net_est": 4229.982,
-      "prod_gross_plan": 2490.329,
+      "prod_gross_plan": 2490.429,
       "prod_net_plan": 2217.611
     },
     {
@@ -265,10 +265,10 @@
     {
       "t": "2026-10-26T05:00:00+01:00",
       "gross_est": 4335.22,
-      "net_plan_gen": 4129.767,
+      "net_plan_gen": 4129.667,
       "net_plan_load": 4064.735,
       "gross_actual": null,
-      "gross_plan": 4283.227,
+      "gross_plan": 4283.127,
       "net_load": null,
       "net_actual": null,
       "net_est": 4062.933,
@@ -278,10 +278,10 @@
     {
       "t": "2026-10-26T05:15:00+01:00",
       "gross_est": 4427.73,
-      "net_plan_gen": 4410.666,
+      "net_plan_gen": 4408.366,
       "net_plan_load": 4173.404,
       "gross_actual": null,
-      "gross_plan": 4564.17,
+      "gross_plan": 4561.87,
       "net_load": null,
       "net_actual": null,
       "net_est": 4144.659,
@@ -369,10 +369,10 @@
     {
       "t": "2026-10-26T07:00:00+01:00",
       "gross_est": 5721.7,
-      "net_plan_gen": 5251.794,
+      "net_plan_gen": 5249.294,
       "net_plan_load": 5300.18,
       "gross_actual": null,
-      "gross_plan": 5406.761,
+      "gross_plan": 5404.261,
       "net_load": null,
       "net_actual": null,
       "net_est": 5266.386,
@@ -382,10 +382,10 @@
     {
       "t": "2026-10-26T07:15:00+01:00",
       "gross_est": 5724.44,
-      "net_plan_gen": 5198.108,
+      "net_plan_gen": 5196.408,
       "net_plan_load": 5406.664,
       "gross_actual": null,
-      "gross_plan": 5352.512,
+      "gross_plan": 5350.813,
       "net_load": null,
       "net_actual": null,
       "net_est": 5247.383,
@@ -395,10 +395,10 @@
     {
       "t": "2026-10-26T07:30:00+01:00",
       "gross_est": 5697.77,
-      "net_plan_gen": 5269.35,
+      "net_plan_gen": 5265.25,
       "net_plan_load": 5472.36,
       "gross_actual": null,
-      "gross_plan": 5423.769,
+      "gross_plan": 5419.669,
       "net_load": null,
       "net_actual": null,
       "net_est": 5213.153,
@@ -408,10 +408,10 @@
     {
       "t": "2026-10-26T07:45:00+01:00",
       "gross_est": 5651.11,
-      "net_plan_gen": 5234.802,
+      "net_plan_gen": 5224.202,
       "net_plan_load": 5490.885,
       "gross_actual": null,
-      "gross_plan": 5389.279,
+      "gross_plan": 5378.678,
       "net_load": null,
       "net_actual": null,
       "net_est": 5175.667,
@@ -421,10 +421,10 @@
     {
       "t": "2026-10-26T08:00:00+01:00",
       "gross_est": 5584.47,
-      "net_plan_gen": 5112.15,
+      "net_plan_gen": 5112.75,
       "net_plan_load": 5492.09,
       "gross_actual": null,
-      "gross_plan": 5266.685,
+      "gross_plan": 5267.284,
       "net_load": null,
       "net_actual": null,
       "net_est": 5134.925,
@@ -433,6 +433,32 @@
     },
     {
       "t": "2026-10-26T08:15:00+01:00",
+      "gross_est": 5500.12,
+      "net_plan_gen": 5027.897,
+      "net_plan_load": 5477.818,
+      "gross_actual": null,
+      "gross_plan": 5182.308,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 5089.617,
+      "prod_gross_plan": 4284.308,
+      "prod_net_plan": 4430.789
+    },
+    {
+      "t": "2026-10-26T08:30:00+01:00",
+      "gross_est": 5407.16,
+      "net_plan_gen": 4984.875,
+      "net_plan_load": 5452.419,
+      "gross_actual": null,
+      "gross_plan": 5139.323,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 5034.502,
+      "prod_gross_plan": 4374.924,
+      "prod_net_plan": 4623.299
+    },
+    {
+      "t": "2026-10-26T08:45:00+01:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -443,5 +469,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-10-25T20:01:09.562753+01:00"
+  "updated": "2026-10-25T20:31:10.985243+01:00"
 }
