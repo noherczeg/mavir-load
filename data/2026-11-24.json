@@ -5,40 +5,62 @@
     {
       "t": "2026-11-24T00:00:00+01:00",
       "gross_est": 5963.76,
-      "net_plan_gen": 5676.381,
-      "net_plan_load": 5439.19,
+      "net_plan_gen": 5671.181,
+      "net_plan_load": 5419.29,
       "gross_actual": null,
-      "gross_plan": 5857.526,
+      "gross_plan": 5852.326,
       "net_load": null,
       "net_actual": null,
       "net_est": 5580.587,
-      "prod_gross_plan": 3834.926,
-      "prod_net_plan": 3486.099
+      "prod_gross_plan": 3835.026,
+      "prod_net_plan": 3494.899
     },
     {
       "t": "2026-11-24T00:15:00+01:00",
-      "gross_est": 5785.02,
+      "gross_est": 5782.68,
       "net_plan_gen": null,
       "net_plan_load": null,
       "gross_actual": null,
       "gross_plan": null,
       "net_load": null,
       "net_actual": null,
-      "net_est": 5460.904
+      "net_est": 5484.806
     },
     {
       "t": "2026-11-24T00:30:00+01:00",
-      "gross_est": 5701.13,
+      "gross_est": 5697.58,
       "net_plan_gen": null,
       "net_plan_load": null,
       "gross_actual": null,
       "gross_plan": null,
       "net_load": null,
       "net_actual": null,
-      "net_est": 5381.683
+      "net_est": 5403.706
     },
     {
       "t": "2026-11-24T00:45:00+01:00",
+      "gross_est": 5625.27,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 5335.081
+    },
+    {
+      "t": "2026-11-24T01:00:00+01:00",
+      "gross_est": 5552.32,
+      "net_plan_gen": null,
+      "net_plan_load": null,
+      "gross_actual": null,
+      "gross_plan": null,
+      "net_load": null,
+      "net_actual": null,
+      "net_est": 5273.831
+    },
+    {
+      "t": "2026-11-24T01:15:00+01:00",
       "gross_est": null,
       "net_plan_gen": null,
       "net_plan_load": null,
@@ -49,5 +71,5 @@
       "net_est": null
     }
   ],
-  "updated": "2026-11-23T12:30:59.120299+01:00"
+  "updated": "2026-11-23T13:01:37.946397+01:00"
 }
